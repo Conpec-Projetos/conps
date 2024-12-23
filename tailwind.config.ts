@@ -3,6 +3,7 @@ import type { Config } from "tailwindcss";
 import { nextui } from "@nextui-org/react";
 
 export default {
+  darkMode: ["class"],
   content: [
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
@@ -16,6 +17,7 @@ export default {
       fontFamily: {
         roboto: ["var(--font-roboto)"],
         poppins: ["var(--font-poppins)"],
+        lato: ["var(--font-lato)"],
       },
       colors: {
         background: "var(--background)",
@@ -29,6 +31,11 @@ export default {
       },
       caretColor: {
         transparent: "transparent",
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
     },
   },

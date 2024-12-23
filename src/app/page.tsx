@@ -1,9 +1,18 @@
+"use client";
+import { Button } from "@/components/ui/button";
+import { useRouter } from 'next/navigation';
+
 export default function App() {
+
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push('/enrollment');
+  }
+
   return (
-    <div className="flex flex-col space-y-6 flex-1 items-center justify-center h-screen bg-zinc-200 text-orange-600">
-      <div className="flex flex-row items-center justify-center gap-2 text-orange-500 hover:drop-shadow-glow transition duration-300">
-        <h1 className="text-4xl uppercase caret-transparent select-none font-semibold">Planejador de PS</h1>
-      </div>
+    <div className="h-screen w-screen flex flex-col items-center justify-center bg-white font-lato">
+      <Button className="w-fit" size="lg" variant="destructive" onClick={handleClick}>Se inscreva no PS!</Button>
     </div>
   );
 }
