@@ -17,19 +17,24 @@ import { Button } from "@components/ui/button";
 import { useEffect } from "react";
 
 const EnrollFormSchema = z.object({
-  name: z.string().nonempty({ message: "Nome é obrigatório" }),
-  email: z.string().email({ message: "Email inválido" }),
+  name: z
+    .string({ message: "Nome é obrigatório" })
+    .nonempty({ message: "Nome é obrigatório" }),
+  email: z
+    .string({ message: "Email é obrigatório" })
+    .email({ message: "Email inválido" }),
   cellphone: z
-    .string()
-    .min(10, { message: "Celular inválido" })
-    .max(11, { message: "Celular inválido" }),
+    .string({ message: "Celular é obrigatório" })
+    .min(9, { message: "Celular inválido" })
+    .max(12, { message: "Celular inválido" })
+    .nonempty({ message: "Celular é obrigatório" }),
   course: z
-    .string({ message: "Selecione um curso" })
-    .nonempty({ message: "Selecione um curso" }),
+    .string({ message: "Selecionar um curso é obrigatório" })
+    .nonempty({ message: "Selecionar um curso é obrigatório" }),
   yearOfAdmission: z
     .number()
     .int()
-    .min(1969)
+    .min(1969, { message: "Você entrou antes do curso existir?" })
     .max(2025, { message: "Ano inválido" }),
   state: z
     .string({ message: "Estado é obrigatório" })
@@ -38,8 +43,12 @@ const EnrollFormSchema = z.object({
   gender: z
     .string({ message: "Gênero é obrigatório" })
     .nonempty({ message: "Gênero é obrigatório" }),
-  raceOrEthnicity: z.string().nonempty({ message: "Campo obrigatório" }),
-  isLGBTQIAP: z.string().nonempty({ message: "Campo obrigatório" }),
+  raceOrEthnicity: z
+    .string({ message: "Campo obrigatório" })
+    .nonempty({ message: "Campo obrigatório" }),
+  isLGBTQIAP: z
+    .string({ message: "Campo obrigatório" })
+    .nonempty({ message: "Campo obrigatório" }),
   accessibilitySuggestions: z.string().optional(),
   whereDidYouHearAboutUs: z
     .string({ message: "Campo obrigatório" })
