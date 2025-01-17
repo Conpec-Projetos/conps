@@ -2,7 +2,7 @@ import type { Config } from "tailwindcss";
 
 import { nextui } from "@nextui-org/react";
 
-export default {
+const Config = {
   darkMode: ["class"],
   content: [
     "./pages/**/*.{ts,tsx}",
@@ -22,11 +22,18 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        orange: {
+          conpec: "#F66C0E"
+        }
       },
       dropShadow: {
         white: [
           "0 0px 20px rgba(255,255, 255, 0.45)",
           "0 0px 65px rgba(255, 255,255, 0.4)",
+        ],
+        orange: [
+          "0 0px 20px rgba(246, 108, 14, 0.45)",
+          "0 0px 65px rgba(246, 108, 14, 0.4)",
         ],
       },
       caretColor: {
@@ -51,4 +58,6 @@ export default {
       },
     }),
   ],
-} satisfies Config;
+};
+
+export default Config;

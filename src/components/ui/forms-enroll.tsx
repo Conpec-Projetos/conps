@@ -117,7 +117,7 @@ export const FormsEnroll = () => {
           console.error("Validation Errors:", errors);
           toast.error("Erro ao enviar formulário");
         })}
-        className="w-full mx-1"
+        className="w-full mx-1 flex flex-col gap-4"
       >
         <div className="grid grid-cols-6 gap-2">
           <div className="col-span-6 sm:col-span-3">
@@ -130,7 +130,7 @@ export const FormsEnroll = () => {
                   <FormControl>
                     <Input
                       type="text"
-                      className="focus:outline-none focus:ring-6 focus:ring-offset-0 focus:border-orange-400 focus-visible:ring-2 focus-visible:ring-orange-600"
+                      className="border-2 border-orange-conpec focus-visible:ring-2 focus-visible:ring-orange-conpec transition-all duration-300"
                       {...field}
                     />
                   </FormControl>
@@ -149,7 +149,7 @@ export const FormsEnroll = () => {
                   <FormControl>
                     <Input
                       type="email"
-                      className="focus:outline-none focus:ring-6 focus:ring-offset-0 focus:border-orange-400 focus-visible:ring-2 focus-visible:ring-orange-600"
+                      className="border-2 border-orange-conpec focus-visible:ring-2 focus-visible:ring-orange-conpec transition-all duration-300"
                       {...field}
                     />
                   </FormControl>
@@ -171,7 +171,8 @@ export const FormsEnroll = () => {
                   <FormControl>
                     <Input
                       type="tel"
-                      className="focus:outline-none focus:ring-6 focus:ring-offset-0 focus:border-orange-400 focus-visible:ring-2 focus-visible:ring-orange-600"
+                      placeholder="(99) 99999-9999"
+                      className="border-2 border-orange-conpec focus-visible:ring-2 focus-visible:ring-orange-conpec transition-all duration-300"
                       {...field}
                     />
                   </FormControl>
@@ -216,7 +217,7 @@ export const FormsEnroll = () => {
                   <FormControl>
                     <Input
                       type="number"
-                      className="w-full focus:outline-none focus:ring-6 focus:ring-offset-0 focus:border-orange-400 focus-visible:ring-2 focus-visible:ring-orange-600"
+                      className="border-2 border-orange-conpec focus-visible:ring-2 focus-visible:ring-orange-conpec transition-all duration-300"
                       {...field}
                       onChange={(e) => field.onChange(e.target.valueAsNumber)}
                     />
@@ -239,7 +240,7 @@ export const FormsEnroll = () => {
                   <FormControl>
                     <Combobox
                       name="state"
-                      label="seu estado de origem"
+                      label="seu estado"
                       size="full"
                       options={states.map((s) => ({ label: s, value: s }))}
                       selectedValue={field.value}
@@ -264,7 +265,7 @@ export const FormsEnroll = () => {
                   <FormControl>
                     <Input
                       type="number"
-                      className="text-center focus:outline-none focus:ring-6 focus:ring-offset-0 focus:border-orange-400 focus-visible:ring-2 focus-visible:ring-orange-600"
+                      className="border-2 border-orange-conpec focus-visible:ring-2 focus-visible:ring-orange-conpec transition-all duration-300"
                       {...field}
                       onChange={(e) => field.onChange(e.target.valueAsNumber)}
                     />
@@ -284,7 +285,7 @@ export const FormsEnroll = () => {
                   <FormControl>
                     <Combobox
                       name="gender"
-                      label="sua identidade de gênero"
+                      label="seu gênero"
                       size="full"
                       options={genders.map((g) => ({ label: g, value: g }))}
                       selectedValue={field.value}
@@ -373,7 +374,7 @@ export const FormsEnroll = () => {
                 <FormControl>
                   <Input
                     type="text"
-                    className="focus:outline-none focus:ring-6 focus:ring-offset-0 focus:border-orange-400 focus-visible:ring-2 focus-visible:ring-orange-600"
+                    className="border-2 border-orange-conpec focus-visible:ring-2 focus-visible:ring-orange-conpec transition-all duration-300"
                     {...field}
                   />
                 </FormControl>
@@ -393,7 +394,7 @@ export const FormsEnroll = () => {
                 <FormControl>
                   <Input
                     type="text"
-                    className="focus:outline-none focus:ring-6 focus:ring-offset-0 focus:border-orange-400 focus-visible:ring-2 focus-visible:ring-orange-600"
+                    className="border-2 border-orange-conpec focus-visible:ring-2 focus-visible:ring-orange-conpec transition-all duration-300"
                     {...field}
                   />
                 </FormControl>
@@ -413,7 +414,7 @@ export const FormsEnroll = () => {
                 <FormControl>
                   <Input
                     type="text"
-                    className="focus:outline-none focus:ring-6 focus:ring-offset-0 focus:border-orange-400 focus-visible:ring-2 focus-visible:ring-orange-600"
+                    className="border-2 border-orange-conpec focus-visible:ring-2 focus-visible:ring-orange-conpec transition-all duration-300"
                     {...field}
                   />
                 </FormControl>
@@ -422,7 +423,7 @@ export const FormsEnroll = () => {
             )}
           />
         </div>
-        <div className="flex justify-center mt-6">
+        <div className="flex justify-center mt-6 mb-2">
           <Button type="submit" className="bg-orange-500 text-white px-[20%]">
             Próximo
           </Button>

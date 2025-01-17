@@ -31,7 +31,9 @@ const Combobox: FC<ComboboxProps> = ({ label, name, options, size, selectedValue
             variant="outline"
             role="combobox"
             size={size}
-            className={`justify-between ${!selectedValue && "text-muted-foreground"}`}
+            className={`border-2 border-orange-conpec focus-visible:ring-2 focus-visible:ring-orange-conpec transition-all duration-300 justify-between ${
+              !selectedValue && ""
+            }`}
           >
             {selectedValue
               ? options.find((option) => option.value === selectedValue)?.label
@@ -40,9 +42,9 @@ const Combobox: FC<ComboboxProps> = ({ label, name, options, size, selectedValue
           </Button>
         </FormControl>
       </PopoverTrigger>
-      <PopoverContent className="w-[200px] p-0">
+      <PopoverContent className="w-[240px] p-0 border-2 border-orange-conpec focus-visible:ring-2 focus-visible:ring-orange-conpec transition-all duration-300">
         <Command>
-          <CommandInput placeholder={`Procure por ${label}`} className="h-9" />
+          <CommandInput placeholder={`Procure por ${label}`} className="h-9 w-auto placeholder:text-orange-conpec" />
           <CommandList>
             <CommandEmpty>Nenhuma opção encontrada.</CommandEmpty>
             <CommandGroup>
@@ -51,6 +53,7 @@ const Combobox: FC<ComboboxProps> = ({ label, name, options, size, selectedValue
                   value={option.label}
                   key={option.value}
                   onSelect={() => setValue(name, option.value)}
+                  className="hover:cursor-pointer"
                 >
                   {option.label}
                   <Check
