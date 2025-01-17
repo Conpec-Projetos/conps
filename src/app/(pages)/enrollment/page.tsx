@@ -1,12 +1,12 @@
+import ConpecBar from "@/components/ui/conpec-bar";
 import FormsEnroll from "@/components/ui/forms-enroll";
 import Logo from "@assets/conpec-logo.svg";
-import LogoStylized from "@assets/conpec-stylized.svg";
 import Image from "next/image";
 
 export default function EnrollmentPage() {
   return (
-    <div className="custom-scrollbar overflow-auto h-screen w-screen flex flex-col lg:flex-row bg-white font-lato">
-      <div className="flex flex-row lg:w-[75%]">
+    <div className="custom-scrollbar overflow-auto h-screen w-screen flex flex-col lg:flex-row bg-white font-lato"> {/* Copie essa linha em todas as páginas */}
+      <div className="flex flex-row lg:w-[75%]"> {/* Copie essa linha em todas as páginas */}
         <div className="flex flex-col h-[95%]">
           <div className="flex flex-col items-start justify-start lg:w-[90%] mx-6 lg:ml-6 mt-6 mb-4 text-zinc-600">
             <div className="flex flex-row w-full justify-end items-center">
@@ -21,11 +21,7 @@ export default function EnrollmentPage() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col items-center justify-center w-full lg:h-auto lg:w-[25%] bg-orange-700">
-        <Image src={LogoStylized} alt="Conpec" width={250} height={250} />
-      </div>
-      
-      
+      <ConpecBar />  {/* Copie essa linha em todas as páginas */}
     </div>
   );
 }
