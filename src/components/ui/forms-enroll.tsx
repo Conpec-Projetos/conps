@@ -1,6 +1,5 @@
-"use client";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Toaster, toast } from "sonner";
 import Combobox from "@components/ui/combobox";
@@ -15,87 +14,14 @@ import {
 } from "@components/ui/form";
 import { Button } from "@components/ui/button";
 import { useEffect } from "react";
+import { genders, races, states, lgbtOptions, EnrollFormSchema, courses } from "@/constants/form";
+import React from "react";
 
-const EnrollFormSchema = z.object({
-  name: z
-    .string({ message: "Nome é obrigatório" })
-    .nonempty({ message: "Nome é obrigatório" }),
-  email: z
-    .string({ message: "Email é obrigatório" })
-    .email({ message: "Email inválido" }),
-  cellphone: z
-    .string({ message: "Celular é obrigatório" })
-    .min(9, { message: "Celular inválido" })
-    .max(12, { message: "Celular inválido" })
-    .nonempty({ message: "Celular é obrigatório" }),
-  course: z
-    .string({ message: "Selecionar um curso é obrigatório" })
-    .nonempty({ message: "Selecionar um curso é obrigatório" }),
-  yearOfAdmission: z
-    .number()
-    .int()
-    .min(1969, { message: "Você entrou antes do curso existir?" })
-    .max(2025, { message: "Ano inválido" }),
-  state: z
-    .string({ message: "Estado é obrigatório" })
-    .nonempty({ message: "Estado é obrigatório" }),
-  age: z.number().int({ message: "Idade inválida" }),
-  gender: z
-    .string({ message: "Gênero é obrigatório" })
-    .nonempty({ message: "Gênero é obrigatório" }),
-  raceOrEthnicity: z
-    .string({ message: "Campo obrigatório" })
-    .nonempty({ message: "Campo obrigatório" }),
-  isLGBTQIAP: z
-    .string({ message: "Campo obrigatório" })
-    .nonempty({ message: "Campo obrigatório" }),
-  accessibilitySuggestions: z.string().optional(),
-  whereDidYouHearAboutUs: z
-    .string({ message: "Campo obrigatório" })
-    .nonempty({ message: "Campo obrigatório" }),
-  anyComments: z.string().optional(),
-});
+type FormsEnrollProps = {
+  onSubmit: (data: z.infer<typeof EnrollFormSchema>) => void;
+};
 
-const courses = [
-  { label: "Ciência da Computação", value: "CC" },
-  { label: "Engenharia de Computação", value: "EC" },
-  { label: "Outro", value: "OUTRO" },
-];
-
-const states = [
-  "AC",
-  "AL",
-  "AP",
-  "AM",
-  "BA",
-  "CE",
-  "DF",
-  "ES",
-  "GO",
-  "MA",
-  "MT",
-  "MS",
-  "MG",
-  "PA",
-  "PB",
-  "PR",
-  "PE",
-  "PI",
-  "RJ",
-  "RN",
-  "RS",
-  "RO",
-  "RR",
-  "SC",
-  "SP",
-  "SE",
-  "TO",
-];
-const genders = ["Masculino", "Feminino", "Não-binário", "Outro"];
-const races = ["Branca", "Preta", "Parda", "Amarela", "Indígena"];
-const lgbtOptions = ["Sim", "Não", "Prefiro não responder"];
-
-export const FormsEnroll = () => {
+export const  FormsEnroll: React.FC<FormsEnrollProps> = ({ onSubmit }) => {
   const form = useForm<z.infer<typeof EnrollFormSchema>>({
     resolver: zodResolver(EnrollFormSchema),
   });
@@ -103,11 +29,6 @@ export const FormsEnroll = () => {
   useEffect(() => {
     console.log(form.getValues());
   }, [form.formState, form]);
-
-  const onSubmit: SubmitHandler<z.infer<typeof EnrollFormSchema>> = (data) => {
-    toast.success("Envio realizado com sucesso!");
-    console.log(data);
-  };
 
   return (
     <Form {...form}>
@@ -424,7 +345,7 @@ export const FormsEnroll = () => {
           />
         </div>
         <div className="flex justify-center mt-6 mb-2">
-          <Button type="submit" className="bg-orange-500 text-white px-[20%]">
+          <Button type="submit" className="bg-orange-conpec text-white px-[20%]">
             Próximo
           </Button>
         </div>
