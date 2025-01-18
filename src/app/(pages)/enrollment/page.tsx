@@ -13,11 +13,11 @@ import { Button } from "@nextui-org/react";
 
 export default function EnrollmentPage() {
   const [currentPage, setCurrentPage] = useState<string>("form");
-  const [formValues, setFormValues] = useState<z.infer<typeof EnrollFormSchema>>();
+  const [enrollmentValues, setEnrollmentValues] = useState<z.infer<typeof EnrollFormSchema>>();
 
   const handleFormSubmit = (data: z.infer<typeof EnrollFormSchema>) => {
     console.log("Dados do forms: ", data);
-    setFormValues(data);
+    setEnrollmentValues(data);
     toast.success("Formulário enviado com sucesso!");
     setCurrentPage("availability");
   };
@@ -25,7 +25,7 @@ export default function EnrollmentPage() {
   const finalSubmit = () => {
     console.log("Cadastro finalizado");
     const enrollmentsCollection = collection(db, "enrollments");
-    addDoc(enrollmentsCollection, formValues);
+    addDoc(enrollmentsCollection, enrollmentValues);
   }
 
   return (
@@ -59,7 +59,8 @@ export default function EnrollmentPage() {
           </div>
         ) : currentPage === "availability" ? (
           <div className="flex flex-col h-[95%]">
-            <p>Página de Adicionar a Disponibilidade Horários</p>
+              <p>Página de Adicionar a Disponibilidade Horários</p>
+              <Button onPress={() => setCurrentPage("auth")}>Próximo</Button>
           </div>
         ) : (
           <div className="flex flex-col h-[95%]">
