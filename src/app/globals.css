@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+}
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #ff6600 #f4f4f4;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 12px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #ff6600;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: #f4f4f4;
+}
+
+/* Firefox-specific scrollbar styling */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #ff6600 #f4f4f4;
+}
