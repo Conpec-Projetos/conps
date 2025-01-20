@@ -1,0 +1,988 @@
+{
+    "Candidates": [
+        {
+            "Name": "John Doe",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": true, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false}
+            }
+        },
+        {
+            "Name": "Jane Smith",
+            "Gender": "F",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": true, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-11": {"08:00": false, "10:00": true, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false}
+            }
+        },
+        {
+            "Name": "Alice Johnson",
+            "Gender": "F",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": true, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-11": {"08:00": false, "10:00": true, "12:00": true, "14:00": true, "16:00": false, "18:00": true},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false}
+            }
+        },
+        {
+            "Name": "Bob Brown",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": true, "14:00": false, "16:00": false, "18:00": true},
+                "2025-01-11": {"08:00": false, "10:00": false, "12:00": true, "14:00": false, "16:00": false, "18:00": true},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": true, "14:00": true, "16:00": false, "18:00": true}
+            }
+        },
+        {
+            "Name": "Charlie Davis",
+            "Gender": "NB",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": false, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": false, "10:00": true, "12:00": false, "14:00": true, "16:00": false, "18:00": true},
+                "2025-01-12": {"08:00": false, "10:00": true, "12:00": false, "14:00": false, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Diana Evans",
+            "Gender": "F",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": false, "14:00": true, "16:00": false, "18:00": false},
+                "2025-01-11": {"08:00": false, "10:00": true, "12:00": false, "14:00": true, "16:00": false, "18:00": true},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false}
+            }
+        },
+        {
+            "Name": "Frank Green",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": true, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-11": {"08:00": false, "10:00": false, "12:00": false, "14:00": true, "16:00": false, "18:00": false},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false}
+            }
+        },
+        {
+            "Name": "Grace Harris",
+            "Gender": "F",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": true, "18:00": false},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": true, "18:00": false}
+            }
+        },
+        {
+            "Name": "Henry Jackson",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": true},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false}
+            }
+        },
+        {
+            "Name": "Irene King",
+            "Gender": "F",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": true},
+                "2025-01-11": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": true},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": true}
+            }
+        },
+        {
+            "Name": "Jack Lee",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-11": {"08:00": true, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-12": {"08:00": false, "10:00": true, "12:00": false, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Juan Martinez",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": true, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-11": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-12": {"08:00": false, "10:00": true, "12:00": false, "14:00": false, "16:00": false, "18:00": true}
+            }
+        },
+        {
+            "Name": "Larry Nelson",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-11": {"08:00": false, "10:00": true, "12:00": false, "14:00": true, "16:00": false, "18:00": true},
+                "2025-01-12": {"08:00": false, "10:00": true, "12:00": false, "14:00": true, "16:00": false, "18:00": true}
+            }
+        },
+        {
+            "Name": "Mary Owens",
+            "Gender": "F",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": true, "14:00": true, "16:00": false, "18:00": false},
+                "2025-01-11": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": true, "14:00": false, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Nick Parker",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": true}
+            }
+        },
+        {
+            "Name": "Olivia Quinn",
+            "Gender": "F",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": true, "12:00": false, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": false, "10:00": true, "12:00": false, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": false, "10:00": true, "12:00": false, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Paul Roberts",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Quinn Scott",
+            "Gender": "F",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-11": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": true, "18:00": false},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Rachel Taylor",
+            "Gender": "F",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-12": {"08:00": true, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false}
+            }
+        },
+        {
+            "Name": "Steve Wilson",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false}
+            }
+        },
+        {
+            "Name": "Sam Young",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Harry Brown",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": true, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-11": {"08:00": false, "10:00": true, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-12": {"08:00": false, "10:00": true, "12:00": false, "14:00": false, "16:00": false, "18:00": false}
+            }
+        },
+        {
+            "Name": "Will Carter",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Vince Davis",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": true, "14:00": false, "16:00": false, "18:00": true},
+                "2025-01-11": {"08:00": false, "10:00": false, "12:00": true, "14:00": false, "16:00": false, "18:00": true},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": true, "14:00": true, "16:00": false, "18:00": true}
+            }
+        },
+        {
+            "Name": "Wendy Evans",
+            "Gender": "F",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": false, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": false, "10:00": true, "12:00": false, "14:00": true, "16:00": false, "18:00": true},
+                "2025-01-12": {"08:00": false, "10:00": true, "12:00": false, "14:00": false, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Xander Foster",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Yara Green",
+            "Gender": "F",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Zane Harris",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Andrew Ingram",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Ben Johnson",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Nicholas King",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": true},
+                "2025-01-11": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": true},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": true}
+            }
+        },
+        {
+            "Name": "Dan Lee",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-11": {"08:00": true, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-12": {"08:00": false, "10:00": true, "12:00": false, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Edward Martinez",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": true, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-11": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-12": {"08:00": false, "10:00": true, "12:00": false, "14:00": false, "16:00": false, "18:00": true}
+            }
+        },
+        {
+            "Name": "Frank Nelson",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-11": {"08:00": false, "10:00": true, "12:00": false, "14:00": true, "16:00": false, "18:00": true},
+                "2025-01-12": {"08:00": false, "10:00": true, "12:00": false, "14:00": true, "16:00": false, "18:00": true}
+            }
+        },
+        {
+            "Name": "Patrick Owens",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": true, "14:00": true, "16:00": false, "18:00": false},
+                "2025-01-11": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": true, "14:00": false, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Harry Parker",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": true}
+            }
+        },
+        {
+            "Name": "Ivy Quinn",
+            "Gender": "F",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": true, "12:00": false, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": false, "10:00": true, "12:00": false, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": false, "10:00": true, "12:00": false, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Jake Roberts",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Paul Scott",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-11": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": true, "18:00": false},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Liam Taylor",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-12": {"08:00": true, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false}
+            }
+        },
+        {
+            "Name": "Mike Wilson",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false}
+            }
+        },
+        {
+            "Name": "John Smith",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false}
+            }
+        },
+        {
+            "Name": "Michael Johnson",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "David Williams",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "James Brown",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Robert Jones",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Charles Garcia",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Joseph Martinez",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Thomas Rodriguez",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": false, "14:00": false, "16:00": false, "18:00": false}
+            }
+        },
+        {
+            "Name": "Christopher Wilson",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false}
+            }
+        },
+        {
+            "Name": "Daniel Anderson",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false}
+            }
+        },
+        {
+            "Name": "Matthew Thomas",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Alice Brown",
+            "Gender": "F",
+            "Availability": {
+            "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+            "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+            "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Betty Clark",
+            "Gender": "F",
+            "Availability": {
+            "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+            "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+            "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Cameron Davis",
+            "Gender": "M",
+            "Availability": {
+            "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+            "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+            "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Douglas Evans",
+            "Gender": "M",
+            "Availability": {
+            "2025-01-10": {"08:00": false, "10:00": false, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+            "2025-01-11": {"08:00": false, "10:00": false, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+            "2025-01-12": {"08:00": false, "10:00": false, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Luke Foster",
+            "Gender": "M",
+            "Availability": {
+            "2025-01-10": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+            "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+            "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Fiona Green",
+            "Gender": "F",
+            "Availability": {
+            "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": false},
+            "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": false},
+            "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": false, "18:00": false}
+            }
+        },
+        {
+            "Name": "Julian Harris",
+            "Gender": "M",
+            "Availability": {
+            "2025-01-10": {"08:00": true, "10:00": true, "12:00": false, "14:00": false, "16:00": true, "18:00": true},
+            "2025-01-11": {"08:00": true, "10:00": true, "12:00": false, "14:00": false, "16:00": true, "18:00": true},
+            "2025-01-12": {"08:00": true, "10:00": true, "12:00": false, "14:00": false, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Hannah Ingram",
+            "Gender": "F",
+            "Availability": {
+            "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+            "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+            "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Jerry Johnson",
+            "Gender": "M",
+            "Availability": {
+            "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+            "2025-01-11": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": true, "18:00": true},
+            "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Julia King",
+            "Gender": "F",
+            "Availability": {
+            "2025-01-10": {"08:00": false, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": false},
+            "2025-01-11": {"08:00": false, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": false},
+            "2025-01-12": {"08:00": false, "10:00": false, "12:00": false, "14:00": true, "16:00": true, "18:00": false}
+            }
+        },
+        {
+            "Name": "Mark Lee",
+            "Gender": "M",
+                "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Andy Garcia",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false}
+            }
+        },
+        {
+            "Name": "Bruno Mars",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Isaac Brown",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-11": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": false, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Oliver White",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Petra King",
+            "Gender": "F",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": false, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": false, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Jake Harris",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": false, "14:00": false, "16:00": false, "18:00": true},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": false, "14:00": false, "16:00": false, "18:00": true},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Barry Moore",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": false, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": false, "10:00": false, "12:00": false, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": false, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Cameron Young",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Dylan King",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false}
+            }
+        },
+        {
+            "Name": "Flora Foster",
+            "Gender": "F",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": false},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": false},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": false}
+            }
+        },
+        {
+            "Name": "Michael Jackson",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Pablo Rodriguez",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": true, "12:00": true, "14:00": true, "16:00": false, "18:00": false},
+                "2025-01-11": {"08:00": false, "10:00": true, "12:00": true, "14:00": true, "16:00": false, "18:00": false},
+                "2025-01-12": {"08:00": false, "10:00": true, "12:00": true, "14:00": true, "16:00": false, "18:00": false}
+            }
+        },
+        {
+            "Name": "Riley Young",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Sean White",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false}
+            }
+        },
+        {
+            "Name": "Charlie Spring",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": false, "12:00": false, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": true, "10:00": false, "12:00": false, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false}
+            }
+        },
+        {
+            "Name": "Nicholas Moore",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Victor Young",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": false, "18:00": false},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": false},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": false}
+            }
+        },
+        {
+            "Name": "Zachary White",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Zack Young",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Owen Walz",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": false, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": false, "10:00": false, "12:00": false, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": false, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Henry Brown",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-11": {"08:00": false, "10:00": false, "12:00": false, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Ethan Young",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Gavin Reynolds",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": false, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": false, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": false, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Ian White",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": false, "14:00": false, "16:00": false, "18:00": false}
+            }
+        },
+        {
+            "Name": "Jack Foster",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Kai Yang",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-11": {"08:00": false, "10:00": false, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Liam Paine",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Mason Young",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false}
+            }
+        }
+    ],
+    "Interviewers": [
+        {
+            "Name": "Tom Adams",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Ursula Baker",
+            "Gender": "F",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": true, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-11": {"08:00": false, "10:00": true, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-12": {"08:00": false, "10:00": true, "12:00": false, "14:00": false, "16:00": false, "18:00": false}
+            }
+        },
+        {
+            "Name": "Victor Clark",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": false, "16:00": false, "18:00": false}
+            }
+        },
+        {
+            "Name": "Wendy Davis",
+            "Gender": "F",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": true, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-11": {"08:00": false, "10:00": false, "12:00": true, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Xavier Edwards",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Yvonne Foster",
+            "Gender": "F",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": false, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": false, "10:00": false, "12:00": false, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": false, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Zachary Gray",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": true, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-11": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": true, "10:00": false, "12:00": false, "14:00": true, "16:00": true, "18:00": false}
+            }
+        },
+        {
+            "Name": "Amy Hill",
+            "Gender": "F",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Brian Ingram",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Clara Johnson",
+            "Gender": "F",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Dennis King",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Eva Lopez",
+            "Gender": "F",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Fred Martin",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": false, "12:00": false, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": false, "10:00": false, "12:00": false, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": false, "14:00": true, "16:00": true, "18:00": true}
+            }
+        },
+        {
+            "Name": "Gloria Young",
+            "Gender": "F",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": false},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": false},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": false}
+            }
+        },
+        {
+            "Name": "Hank Hill",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": false, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": false, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": false, "10:00": false, "12:00": false, "14:00": false, "16:00": false, "18:00": true}
+            }
+        },
+        {
+            "Name": "Ze de Votuporanga",
+            "Gender": "M",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": true, "18:00": true},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": true, "16:00": false, "18:00": false}
+            }
+        },
+        {
+            "Name": "Yara Silva",
+            "Gender": "F",
+            "Availability": {
+                "2025-01-10": {"08:00": true, "10:00": true, "12:00": true, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-11": {"08:00": true, "10:00": true, "12:00": true, "14:00": false, "16:00": false, "18:00": false},
+                "2025-01-12": {"08:00": true, "10:00": true, "12:00": true, "14:00": false, "16:00": false, "18:00": false}
+            }
+        }
+    ], "AvailableSlots": {
+        "datetimes": {
+            "2025-01-10": ["08:00", "10:00", "12:00", "14:00", "16:00", "18:00"],
+            "2025-01-11": ["08:00", "10:00", "12:00", "14:00", "16:00", "18:00"],
+            "2025-01-12": ["08:00", "10:00", "12:00", "14:00", "16:00", "18:00"]
+        },
+        "places": ["Sede"]
+    }, 
+    "MaxNumCandPerSlot": 6,
+    "MinNumCandPerSlot": 5,
+    "NumIntPerSlot": 2
+}

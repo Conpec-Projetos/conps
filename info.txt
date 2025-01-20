@@ -1,0 +1,108 @@
+Tom Adams has 8 interviews at ['2025-01-10 08:00', '2025-01-10 12:00', '2025-01-11 08:00', '2025-01-11 12:00', '2025-01-11 16:00', '2025-01-12 08:00', '2025-01-12 12:00', '2025-01-13 10:00']
+Ursula Baker has 4 interviews at ['2025-01-10 10:00', '2025-01-11 10:00', '2025-01-12 10:00', '2025-01-13 10:00']
+Victor Clark has 8 interviews at ['2025-01-10 08:00', '2025-01-11 08:00', '2025-01-11 10:00', '2025-01-11 12:00', '2025-01-12 08:00', '2025-01-12 10:00', '2025-01-12 12:00', '2025-01-13 10:00']
+Wendy Davis has 6 interviews at ['2025-01-10 12:00', '2025-01-12 16:00', '2025-01-11 12:00', '2025-01-12 12:00', '2025-01-12 14:00', '2025-01-12 18:00']
+Xavier Edwards has 6 interviews at ['2025-01-10 08:00', '2025-01-10 14:00', '2025-01-12 16:00', '2025-01-12 18:00', '2025-01-13 12:00', '2025-01-13 14:00']
+Yvonne Foster has 10 interviews at ['2025-01-10 14:00', '2025-01-10 16:00', '2025-01-10 18:00', '2025-01-11 14:00', '2025-01-11 16:00', '2025-01-11 18:00', '2025-01-12 14:00', '2025-01-12 16:00', '2025-01-12 18:00', '2025-01-13 14:00']
+Zachary Gray has 8 interviews at ['2025-01-10 10:00', '2025-01-11 16:00', '2025-01-11 18:00', '2025-01-12 08:00', '2025-01-12 14:00', '2025-01-12 16:00', '2025-01-13 08:00', '2025-01-13 12:00']
+Amy Hill has 6 interviews at ['2025-01-10 16:00', '2025-01-10 18:00', '2025-01-11 16:00', '2025-01-11 18:00', '2025-01-12 16:00', '2025-01-12 18:00']
+Brian Ingram has 8 interviews at ['2025-01-10 08:00', '2025-01-10 14:00', '2025-01-11 08:00', '2025-01-11 12:00', '2025-01-11 18:00', '2025-01-12 10:00', '2025-01-12 14:00', '2025-01-13 12:00']
+Clara Johnson has 10 interviews at ['2025-01-10 12:00', '2025-01-10 14:00', '2025-01-10 16:00', '2025-01-10 18:00', '2025-01-12 08:00', '2025-01-12 10:00', '2025-01-12 12:00', '2025-01-12 14:00', '2025-01-13 08:00', '2025-01-13 12:00']
+Dennis King has 8 interviews at ['2025-01-10 10:00', '2025-01-10 16:00', '2025-01-11 10:00', '2025-01-11 14:00', '2025-01-11 18:00', '2025-01-12 10:00', '2025-01-13 08:00', '2025-01-13 12:00']
+Eva Lopez has 6 interviews at ['2025-01-10 16:00', '2025-01-10 18:00', '2025-01-11 16:00', '2025-01-11 18:00', '2025-01-12 16:00', '2025-01-12 18:00']
+Fred Martin has 6 interviews at ['2025-01-10 14:00', '2025-01-10 18:00', '2025-01-11 14:00', '2025-01-11 16:00', '2025-01-12 14:00', '2025-01-13 14:00']
+Gloria Young has 13 interviews at ['2025-01-10 08:00', '2025-01-10 10:00', '2025-01-10 12:00', '2025-01-10 14:00', '2025-01-11 08:00', '2025-01-10 16:00', '2025-01-11 10:00', '2025-01-11 12:00', '2025-01-11 14:00', '2025-01-13 08:00', '2025-01-13 10:00', '2025-01-13 12:00', '2025-01-13 14:00']
+Hank Hill has 8 interviews at ['2025-01-10 10:00', '2025-01-10 18:00', '2025-01-11 10:00', '2025-01-11 14:00', '2025-01-12 18:00', '2025-01-13 08:00', '2025-01-13 10:00', '2025-01-13 14:00']
+Ze de Votuporanga has 8 interviews at ['2025-01-10 12:00', '2025-01-11 08:00', '2025-01-11 10:00', '2025-01-11 14:00', '2025-01-12 08:00', '2025-01-12 12:00', '2025-01-13 08:00', '2025-01-13 14:00']
+Yara Silva has 9 interviews at ['2025-01-10 08:00', '2025-01-10 10:00', '2025-01-10 12:00', '2025-01-11 08:00', '2025-01-11 12:00', '2025-01-12 08:00', '2025-01-12 10:00', '2025-01-12 12:00', '2025-01-13 10:00']
+
+Slot 2025-01-10 at 08:00 in Sede has 1 candidates and 2 interviewers
+Slot 2025-01-10 at 08:00 in PE22 has 1 candidates and 2 interviewers
+Slot 2025-01-10 at 08:00 in FE01 has 1 candidates and 2 interviewers
+Slot 2025-01-10 at 10:00 in Sede has 1 candidates and 2 interviewers
+Slot 2025-01-10 at 10:00 in PE22 has 1 candidates and 2 interviewers
+Slot 2025-01-10 at 10:00 in FE01 has 1 candidates and 2 interviewers
+Slot 2025-01-10 at 12:00 in Sede has 1 candidates and 2 interviewers
+Slot 2025-01-10 at 12:00 in PE22 has 1 candidates and 2 interviewers
+Slot 2025-01-10 at 12:00 in FE01 has 1 candidates and 2 interviewers
+Slot 2025-01-10 at 14:00 in Sede has 1 candidates and 2 interviewers
+Slot 2025-01-10 at 14:00 in PE22 has 1 candidates and 2 interviewers
+Slot 2025-01-10 at 14:00 in FE01 has 1 candidates and 2 interviewers
+Slot 2025-01-10 at 16:00 in Sede has 1 candidates and 2 interviewers
+Slot 2025-01-10 at 16:00 in PE22 has 1 candidates and 2 interviewers
+Slot 2025-01-10 at 16:00 in FE01 has 1 candidates and 2 interviewers
+Slot 2025-01-10 at 18:00 in Sede has 1 candidates and 2 interviewers
+Slot 2025-01-10 at 18:00 in PE22 has 1 candidates and 2 interviewers
+Slot 2025-01-10 at 18:00 in FE01 has 1 candidates and 2 interviewers
+Slot 2025-01-11 at 08:00 in Sede has 1 candidates and 2 interviewers
+Slot 2025-01-11 at 08:00 in PE22 has 1 candidates and 2 interviewers
+Slot 2025-01-11 at 08:00 in FE01 has 1 candidates and 2 interviewers
+Slot 2025-01-11 at 10:00 in Sede has 1 candidates and 2 interviewers
+Slot 2025-01-11 at 10:00 in PE22 has 1 candidates and 2 interviewers
+Slot 2025-01-11 at 10:00 in FE01 has 1 candidates and 2 interviewers
+Slot 2025-01-11 at 12:00 in Sede has 1 candidates and 2 interviewers
+Slot 2025-01-11 at 12:00 in PE22 has 1 candidates and 2 interviewers
+Slot 2025-01-11 at 12:00 in FE01 has 1 candidates and 2 interviewers
+Slot 2025-01-11 at 14:00 in Sede has 1 candidates and 2 interviewers
+Slot 2025-01-11 at 14:00 in PE22 has 1 candidates and 2 interviewers
+Slot 2025-01-11 at 14:00 in FE01 has 1 candidates and 2 interviewers
+Slot 2025-01-11 at 16:00 in Sede has 1 candidates and 2 interviewers
+Slot 2025-01-11 at 16:00 in PE22 has 1 candidates and 2 interviewers
+Slot 2025-01-11 at 16:00 in FE01 has 1 candidates and 2 interviewers
+Slot 2025-01-11 at 18:00 in Sede has 1 candidates and 2 interviewers
+Slot 2025-01-11 at 18:00 in PE22 has 1 candidates and 2 interviewers
+Slot 2025-01-11 at 18:00 in FE01 has 1 candidates and 2 interviewers
+Slot 2025-01-12 at 08:00 in Sede has 1 candidates and 2 interviewers
+Slot 2025-01-12 at 08:00 in PE22 has 1 candidates and 2 interviewers
+Slot 2025-01-12 at 08:00 in FE01 has 1 candidates and 2 interviewers
+Slot 2025-01-12 at 10:00 in Sede has 1 candidates and 2 interviewers
+Slot 2025-01-12 at 10:00 in PE22 has 1 candidates and 2 interviewers
+Slot 2025-01-12 at 10:00 in FE01 has 1 candidates and 2 interviewers
+Slot 2025-01-12 at 12:00 in Sede has 1 candidates and 2 interviewers
+Slot 2025-01-12 at 12:00 in PE22 has 1 candidates and 2 interviewers
+Slot 2025-01-12 at 12:00 in FE01 has 1 candidates and 2 interviewers
+Slot 2025-01-12 at 14:00 in Sede has 1 candidates and 2 interviewers
+Slot 2025-01-12 at 14:00 in PE22 has 1 candidates and 2 interviewers
+Slot 2025-01-12 at 14:00 in FE01 has 1 candidates and 2 interviewers
+Slot 2025-01-12 at 16:00 in Sede has 1 candidates and 2 interviewers
+Slot 2025-01-12 at 16:00 in PE22 has 1 candidates and 2 interviewers
+Slot 2025-01-12 at 16:00 in FE01 has 1 candidates and 2 interviewers
+Slot 2025-01-12 at 18:00 in Sede has 1 candidates and 2 interviewers
+Slot 2025-01-12 at 18:00 in PE22 has 1 candidates and 2 interviewers
+Slot 2025-01-12 at 18:00 in FE01 has 1 candidates and 2 interviewers
+Slot 2025-01-13 at 08:00 in Sede has 1 candidates and 2 interviewers
+Slot 2025-01-13 at 08:00 in PE22 has 1 candidates and 2 interviewers
+Slot 2025-01-13 at 08:00 in FE01 has 1 candidates and 2 interviewers
+Slot 2025-01-13 at 10:00 in Sede has 1 candidates and 2 interviewers
+Slot 2025-01-13 at 10:00 in PE22 has 1 candidates and 2 interviewers
+Slot 2025-01-13 at 10:00 in FE01 has 1 candidates and 2 interviewers
+Slot 2025-01-13 at 12:00 in Sede has 1 candidates and 2 interviewers
+Slot 2025-01-13 at 12:00 in PE22 has 1 candidates and 2 interviewers
+Slot 2025-01-13 at 12:00 in FE01 has 1 candidates and 2 interviewers
+Slot 2025-01-13 at 14:00 in Sede has 1 candidates and 2 interviewers
+Slot 2025-01-13 at 14:00 in PE22 has 1 candidates and 2 interviewers
+Slot 2025-01-13 at 14:00 in FE01 has 1 candidates and 2 interviewers
+Slot 2025-01-13 at 16:00 in Sede has 0 candidates and 0 interviewers
+Slot 2025-01-13 at 16:00 in PE22 has 0 candidates and 0 interviewers
+Slot 2025-01-13 at 16:00 in FE01 has 0 candidates and 0 interviewers
+Slot 2025-01-13 at 18:00 in Sede has 0 candidates and 0 interviewers
+Slot 2025-01-13 at 18:00 in PE22 has 0 candidates and 0 interviewers
+Slot 2025-01-13 at 18:00 in FE01 has 0 candidates and 0 interviewers
+Slot 2025-01-14 at 08:00 in Sede has 0 candidates and 0 interviewers
+Slot 2025-01-14 at 08:00 in PE22 has 0 candidates and 0 interviewers
+Slot 2025-01-14 at 08:00 in FE01 has 0 candidates and 0 interviewers
+Slot 2025-01-14 at 10:00 in Sede has 0 candidates and 0 interviewers
+Slot 2025-01-14 at 10:00 in PE22 has 0 candidates and 0 interviewers
+Slot 2025-01-14 at 10:00 in FE01 has 0 candidates and 0 interviewers
+Slot 2025-01-14 at 12:00 in Sede has 0 candidates and 0 interviewers
+Slot 2025-01-14 at 12:00 in PE22 has 0 candidates and 0 interviewers
+Slot 2025-01-14 at 12:00 in FE01 has 0 candidates and 0 interviewers
+Slot 2025-01-14 at 14:00 in Sede has 0 candidates and 0 interviewers
+Slot 2025-01-14 at 14:00 in PE22 has 0 candidates and 0 interviewers
+Slot 2025-01-14 at 14:00 in FE01 has 0 candidates and 0 interviewers
+Slot 2025-01-14 at 16:00 in Sede has 0 candidates and 0 interviewers
+Slot 2025-01-14 at 16:00 in PE22 has 0 candidates and 0 interviewers
+Slot 2025-01-14 at 16:00 in FE01 has 0 candidates and 0 interviewers
+Slot 2025-01-14 at 18:00 in Sede has 0 candidates and 0 interviewers
+Slot 2025-01-14 at 18:00 in PE22 has 0 candidates and 0 interviewers
+Slot 2025-01-14 at 18:00 in FE01 has 0 candidates and 0 interviewers
