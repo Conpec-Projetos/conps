@@ -19,4 +19,4 @@ interface Slot {
     time: string;
 }
 
-export { User, Slot, Role };
+export type { User, Slot, Role };
