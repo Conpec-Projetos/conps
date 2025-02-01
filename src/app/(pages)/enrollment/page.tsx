@@ -1,7 +1,7 @@
 "use client";
 import ConpecBar from "@/components/ui/conpec-bar";
 import FormsEnroll from "@/components/ui/forms-enroll";
-import Logo from "@assets/conpec-logo.svg";
+import Logo from "@assets/conpec-full.png";
 import Image from "next/image";
 import { useState } from "react";
 import { EnrollFormSchema } from "@/constants/form";

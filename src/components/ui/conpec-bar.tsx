@@ -1,5 +1,5 @@
 import Image from "next/image"
-import LogoStylized from "@assets/conpec-stylized.svg";
+import LogoStylized from "@assets/conpec-styled.png";
 
 export const ConpecBar = () => {
     return (
