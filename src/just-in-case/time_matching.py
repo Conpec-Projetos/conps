@@ -1,5 +1,11 @@
+"""
+CÓDIGO DEPRECADO
+
+FOI USADA IA PARA CONVERTER ESTE ARQUIVO PARA TYPESCRIPT, O CÓDIGO CONVERTIDO ESTÁ EM src/app/time_matching.ts
+ESTE ARQUIVO ESTÁ AQUI APENAS PARA FINS DE REFERÊNCIA
+"""
+
 import json
-import datetime as dt
 from random import randint
 
 class Candidate:
@@ -83,7 +89,7 @@ def print_assignments(available_slots):
     print("")
 
 def write_results_to_txt(available_slots):
-    with open("results.txt", "w") as file:
+    with open("results_py.txt", "w") as file:
         for s in available_slots:
             if s.candidates != []:
                 file.write(f"{len(s.candidates)} candidate(s) on slot {s.date} at {s.time} in {s.place}: {str([c.name for c in s.candidates])}\n")
@@ -91,7 +97,7 @@ def write_results_to_txt(available_slots):
         file.close()
 
 def info(interviewers, available_slots):
-    with open("info.txt", "w") as file:
+    with open("info_py.txt", "w") as file:
         for i in interviewers:
             file.write(f"{i.name} has {len(i.slots)} interviews at {str([s.date + ' ' + s.time for s in i.slots])}\n")
         file.write("\n")
@@ -276,7 +282,8 @@ def greedy_matching(candidates, max_num_cand_per_slot, min_num_cand_per_slot, in
                 if len(s.interviewers) < num_int_per_slot and i.availability[s.date][s.time] and not i.has_slot_at(s.date, s.time):
                     s.interviewers.append(i)
                     i.slots.append(s)
-                    remaining_slots[s] = False
+                    if len(s.interviewers) == num_int_per_slot:
+                        remaining_slots[s] = False
                     break
     
 def main():
