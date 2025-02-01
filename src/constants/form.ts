@@ -9,6 +9,7 @@ const EnrollFormSchema = z.object({
     .email({ message: "Email inválido" }),
   cellphone: z
     .string({ message: "Celular é obrigatório" })
+    .nonempty()
     .min(9, { message: "Celular inválido" })
     .max(12, { message: "Celular inválido" })
     .nonempty({ message: "Celular é obrigatório" }),
@@ -16,14 +17,14 @@ const EnrollFormSchema = z.object({
     .string({ message: "Selecionar um curso é obrigatório" })
     .nonempty({ message: "Selecionar um curso é obrigatório" }),
   yearOfAdmission: z
-    .number()
+    .number({ message: "Ano de ingresso é obrigatório" })
     .int()
     .min(1969, { message: "Você entrou antes do curso existir?" })
     .max(2025, { message: "Ano inválido" }),
   state: z
     .string({ message: "Estado é obrigatório" })
     .nonempty({ message: "Estado é obrigatório" }),
-  age: z.number().int({ message: "Idade inválida" }),
+  age: z.number({message: "Idade é obrigatória"}).int({ message: "Idade inválida" }),
   gender: z
     .string({ message: "Gênero é obrigatório" })
     .nonempty({ message: "Gênero é obrigatório" }),
