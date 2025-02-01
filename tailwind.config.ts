@@ -20,8 +20,6 @@ const Config = {
         lato: ["var(--font-lato)"],
       },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
         orange: {
           conpec: "#F66C0E"
         }

@@ -1,7 +1,7 @@
 "use client";
 import ConpecBar from "@/components/ui/conpec-bar";
 import FormsEnroll from "@/components/ui/forms-enroll";
-import Logo from "@assets/conpec-logo.svg";
+import Logo from "@assets/conpec-full.png";
 import Image from "next/image";
 import { useState } from "react";
 import { EnrollFormSchema } from "@/constants/form";
@@ -39,7 +39,7 @@ export default function EnrollmentPage() {
           <div className="flex flex-col h-[95%]">
             <div className="flex flex-col items-start justify-start lg:w-[90%] mx-6 lg:ml-6 mt-6 mb-4 text-zinc-600">
               <div className="flex flex-row w-full justify-end items-center">
-                <Image src={Logo} alt="Conpec" width={150} height={150} />
+                <Image src={Logo} alt="Conpec" width={150} height={150} className="select-none" draggable={false} />
               </div>
               <h1 className="font-poppins text-3xl font-extrabold text-zinc-900">
                 Informações Básicas
@@ -71,7 +71,7 @@ export default function EnrollmentPage() {
       </div>
       <ConpecBar />{" "}
       {/* Copie o componente acima em todas as páginas com borda lateral */}
-      <Toaster richColors closeButton position="bottom-left" />
+      <Toaster richColors closeButton position="bottom-right" />
     </div>
   );
 }
