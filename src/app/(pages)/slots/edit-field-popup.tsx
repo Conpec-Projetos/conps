@@ -1,42 +1,84 @@
 import { Button } from '@nextui-org/react'
-import { Horario } from './types'
+import { TableSlot, SlotsType, TableData } from './types'
 
-type EditFieldPopupProps = {
-  horario: Horario
-  day: string
-  local: string
-  setIsOpen: (isOpen: boolean) => void
+interface EditFieldPopupProps {
+  data: TableData[]
+  selectedSlot: TableSlot
+  selectedDay: TableData
   names: string[]
+  slotsType: SlotsType
+  setData: (newData: TableData[]) => void
+  setIsOpen: (isOpen: boolean) => void
+  setSelectedSlot: (newSelectedSlot: TableSlot) => void
 }
 
 export default function EditFieldPopup({
-  horario,
-  day,
-  local,
-  setIsOpen,
+  data,
+  selectedSlot,
+  selectedDay,
   names,
+  slotsType,
+  setData,
+  setIsOpen,
+  setSelectedSlot,
 }: EditFieldPopupProps) {
-  const otherFields = [
-    { label: 'Dia', value: day },
-    { label: 'Horário', value: horario.horario },
-    { label: 'Local', value: local },
-  ]
-  console.log(names)
+  const numCandidates = slotsType == SlotsType.dinamicas ? 6 : 1
+  const numInterviewers = 2
+
   let fields: { label: string; value: string }[] = []
 
-  for (let i = 0; i < horario.candidatos.length; i++) {
+  for (let i = 0; i < numCandidates; i++) {
     fields.push({
       label: `Candidato ${i + 1}`,
-      value: horario.candidatos[i],
+      value: selectedSlot.candidates[i],
     })
   }
-  for (let i = 0; i < horario.entrevistadores.length; i++) {
+  for (let i = 0; i < numInterviewers; i++) {
     fields.push({
       label: `Entrevistador ${i + 1}`,
-      value: horario.entrevistadores[i],
+      value: selectedSlot.interviewers[i],
     })
   }
-  fields = fields.concat(otherFields)
+  fields = fields.concat([
+    { label: 'Dia', value: selectedDay.date },
+    { label: 'Horário', value: selectedSlot.time },
+    { label: 'Local', value: selectedDay.place },
+  ])
+
+  const handleSelectChange = (index: number, value: string) => {
+    if (index < numCandidates) {
+      const updatedCandidates = [...selectedSlot.candidates]
+      updatedCandidates[index] = value
+
+      setSelectedSlot({ ...selectedSlot, candidates: updatedCandidates })
+    } else if (index < numCandidates + numInterviewers) {
+      const updatedInterviewers = [...selectedSlot.interviewers]
+      updatedInterviewers[index % numCandidates] = value
+
+      setSelectedSlot({ ...selectedSlot, interviewers: updatedInterviewers })
+    }
+  }
+
+  const handleSave = () => {
+    const updatedData = data.map((day) => {
+      if (day.date === selectedDay.date) {
+        return {
+          ...day,
+          slots: day.slots.map((slot) => {
+            if (slot.time === selectedSlot.time) {
+              return {
+                ...selectedSlot,
+              }
+            }
+            return slot
+          }),
+        }
+      }
+      return day
+    })
+    setData(updatedData)
+    setIsOpen(false)
+  }
 
   return (
     <div
@@ -55,9 +97,12 @@ export default function EditFieldPopup({
               <label className="text-orange-conpec text-[15px] font-[600]">
                 {field.label}
               </label>
-              <select className="w-full border border-orange-conpec rounded text-[13px] font-bold">
+              <select
+                className="w-full border border-orange-conpec rounded text-[13px] font-bold"
+                onChange={(e) => handleSelectChange(index, e.target.value)}
+              >
                 <option value="">{field.value}</option>
-                {index < horario.candidatos.length &&
+                {index < numCandidates &&
                   names.map((name, index) => (
                     <option key={index} value={name}>
                       {name}
@@ -69,7 +114,7 @@ export default function EditFieldPopup({
         </div>
         <Button
           className="block mt-4 mx-auto w-[221px] h-[33px] transition bg-orange-conpec text-white rounded-[5px]"
-          onPress={() => setIsOpen(false)}
+          onPress={() => handleSave()}
         >
           Salvar
         </Button>

@@ -1,22 +1,22 @@
-export type Horario = {
-  horario: string
-  candidatos: string[]
-  entrevistadores: string[]
+export interface TableSlot {
+  time: string
+  candidates: string[]
+  interviewers: string[]
 }
 
 export interface TableData {
-  day: string
-  local: string
-  horarios: Horario[]
+  date: string
+  place: string
+  slots: TableSlot[]
 }
 
-// export interface TableData {
-//   candidates: string[]
-//   interviewers: string[]
-//   date: string
-//   place: string
-//   time: string
-// }
+export interface Slot {
+  candidates: string[]
+  interviewers: string[]
+  date: string
+  place: string
+  time: string
+}
 
 export enum SlotsType {
   dinamicas,
