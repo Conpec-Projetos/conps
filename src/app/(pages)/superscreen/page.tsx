@@ -2,12 +2,9 @@
 import React from 'react'
 import Image from 'next/image'
 import Logo from "@assets/conpec-full.png";
+import { algorithm } from "../../time_matching"; 
+import { useRouter } from 'next/navigation';
 import { Button } from "@/components/ui/button";
-import {
-    ResizableHandle,
-    ResizablePanel,
-    ResizablePanelGroup,
-  } from "@/components/ui/resizable"
   import {
     Table,
     TableBody,
@@ -18,6 +15,9 @@ import {
     TableRow,
   } from "@/components/ui/table"
 const page = () => {
+  const consoleClick = () => {
+    algorithm();  
+  }
   return (
     <div className="flex flex-col min-h-screen">
         <div className="flex flex-row w-full justify-end items-center pt-4 pr-4">
@@ -44,10 +44,10 @@ const page = () => {
         {/* Cabeçalho */}
         <TableHeader className="bg-orange-500 text-white text-center">
           <TableRow>
-            <TableHead className="border border-orange-500 text-center w-40">Nome</TableHead>
-            <TableHead className="bg-stone-50 w-35 text-center">Gênero</TableHead>
-            <TableHead className="border border-orange-500 text-center w-80">Disponibilidade</TableHead>
-            <TableHead className="bg-stone-50 w-40 text-center">Situação</TableHead>
+            <TableHead className="border border-orange-500 text-center w-40 text-black">Nome</TableHead>
+            <TableHead className="bg-stone-50 w-35 text-center text-black">Gênero</TableHead>
+            <TableHead className="border border-orange-500 text-center w-80 text-black">Disponibilidade</TableHead>
+            <TableHead className="bg-stone-50 w-40 text-center text-black">Situação</TableHead>
           </TableRow>
         </TableHeader>
 
@@ -82,10 +82,10 @@ const page = () => {
         {/* Cabeçalho */}
         <TableHeader className="bg-orange-500 text-white text-center">
           <TableRow>
-            <TableHead className="border border-orange-500 text-center w-40">Nome</TableHead>
-            <TableHead className="bg-stone-50 w-35 text-center">Gênero</TableHead>
-            <TableHead className="border border-orange-500 text-center w-80">Disponibilidade</TableHead>
-            <TableHead className="bg-stone-50 w-40 text-center">Situação</TableHead>
+            <TableHead className="border border-orange-500 text-center w-40 text-black">Nome</TableHead>
+            <TableHead className="bg-stone-50 w-35 text-center text-black">Gênero</TableHead>
+            <TableHead className="border border-orange-500 text-center w-80 text-black">Disponibilidade</TableHead>
+            <TableHead className="bg-stone-50 w-40 text-center text-black">Situação</TableHead>
           </TableRow>
         </TableHeader>
 
@@ -118,16 +118,16 @@ const page = () => {
 
         </div>
     </div>
-    <div className='flex flex-row justify-start items-start pt-10 pl-5 font-bold text-xl gap-5'>
+    <div className='flex flex-row justify-start items-start pt-8 pl-5 font-bold text-xl gap-5'>
             Entrevistadores
         <div className="flex flex-row gap-4 justify-start items-start pt-10 w-full">
       <Table className="border border-orange-500 w-[80%]">
         {/* Cabeçalho */}
         <TableHeader className="bg-orange-500 text-white text-center">
           <TableRow>
-            <TableHead className="border border-orange-500 text-center w-40">Nome</TableHead>
-            <TableHead className="bg-stone-50 w-35 text-center">Gênero</TableHead>
-            <TableHead className="border border-orange-500 text-center w-80">Disponibilidade</TableHead>
+            <TableHead className="border border-orange-500 text-center w-40 text-black">Nome</TableHead>
+            <TableHead className="bg-stone-50 w-35 text-center text-black">Gênero</TableHead>
+            <TableHead className="border border-orange-500 text-center w-80 text-black">Disponibilidade</TableHead>
           </TableRow>
         </TableHeader>
 
@@ -159,9 +159,9 @@ const page = () => {
         {/* Cabeçalho */}
         <TableHeader className="bg-orange-500 text-white text-center">
           <TableRow>
-            <TableHead className="border border-orange-500 text-center w-40">Nome</TableHead>
-            <TableHead className="bg-stone-50 w-35 text-center">Gênero</TableHead>
-            <TableHead className="border border-orange-500 text-center w-80">Disponibilidade</TableHead>
+            <TableHead className="border border-orange-500 text-center w-40 text-black">Nome</TableHead>
+            <TableHead className="bg-stone-50 w-35 text-center text-black">Gênero</TableHead>
+            <TableHead className="border border-orange-500 text-center w-80 text-black">Disponibilidade</TableHead>
           </TableRow>
         </TableHeader>
 
@@ -196,8 +196,8 @@ const page = () => {
         {/* empurra o botão para baixo */}
         <div className="flex-grow"></div>
         {/* botão de rodar o algoritmo - Final Screen */}
-        <div className='flex flex-row w-full justify-center items-center pb-5'>
-            <Button className="w-fit" size="lg" variant="destructive">
+        <div className='flex flex-row w-full justify-center items-center pb-3 mt-5'>
+            <Button className="w-fit" size="lg" variant="destructive" onClick={consoleClick}>
                 Rodar Algoritmo
             </Button>
         </div>
