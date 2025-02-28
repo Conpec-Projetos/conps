@@ -17,24 +17,95 @@ import {
 import { db } from '@/firebase/firebase-config';
 import { collection, getDocs } from 'firebase/firestore';
 interface Candidate {
+  TransformedAvailability: { day: string; hours: string[]; }[];
   Name: string;
   Gender: string;
-  // Add other properties as needed
+  Candidates: Array<any>;
+  Availability: { [key: string]: { [key: string]: boolean } };
+}
+
+interface Interview{
+  TransformedAvailability: { day: string; hours: string[]; }[];
+  Name : string;
+  Gender : string;
+  Interviewers: Array<any>;
+  Availability: { [key: string]: { [key: string]: boolean } };
 }
 
 const page = () => {
   const [candidates, setCandidates] = useState<Candidate[]>([])
-
+  const [interviewrs, setInterview] = useState<Interview[]>([])
   useEffect(() => {
     const fetchData = async () => {
       const snapshot = collection(db, "tests_2")
       const tests = (await getDocs(snapshot)).docs.map(doc => doc.data())
       setCandidates(tests[0].Candidates)
+      tests[0].Candidates.map((cand: Candidate) => {
+        const keys = Object.keys(cand.Availability)
+        keys.sort()
+        const avals = []
+        for (let key of keys) {
+          const hoursKeys = Object.keys(cand.Availability[key])
+          const list_hours = []
+          //console.log(cand.Availability)
+          for (let hourKey of hoursKeys) {
+            if (cand.Availability[key][hourKey]) {
+              list_hours.push(hourKey)
+            }
+            list_hours.sort()
+          }
+          const avalObj = {
+            day: key,
+            hours: list_hours
+          }
+          console.log()
+          avals.push(avalObj)
+
+        }
+        cand.TransformedAvailability = avals
+      })
     }
     fetchData()
-    console.log(candidates)
+    
   }, [])
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const snapshot = collection(db, "tests_2")
+      const tests2 = (await getDocs(snapshot)).docs.map(doc => doc.data())
+      setInterview(tests2[0].Interviewers)
+      tests2[0].Interviewers.map((inter: Interview) => {
+        const keys2 = Object.keys(inter.Availability)
+        keys2.sort()
+        const avals_inter = []
+        for (let key of keys2) {
+          const hoursKeys_inter = Object.keys(inter.Availability[key])
+          const list_hours_inter = []
+          //console.log(cand.Availability)
+          for (let hourKey of hoursKeys_inter) {
+            if (inter.Availability[key][hourKey]) {
+              list_hours_inter.push(hourKey)
+            }
+            list_hours_inter.sort()
+          }
+          const avalObj = {
+            day: key,
+            hours: list_hours_inter
+          }
+          console.log()
+          avals_inter.push(avalObj)
+
+        }
+        inter.TransformedAvailability = avals_inter
+      })
+    }
+    fetchData()
+    
+  }, [])
+
+  
+
+  
   const consoleClick = () => {
     algorithm();
   }
@@ -82,15 +153,9 @@ const page = () => {
                     {cand.Gender}
                   </TableCell>
                   <TableCell className="border border-orange-500 p-2">
-                    <strong>Dia 1:</strong> xxhyy - wwhzz, xxhyy - wwhzz, xxhyy - wwhzz
-                    <br />
-                    <strong>Dia 2:</strong> xxhyy - wwhzz, xxhyy - wwhzz, xxhyy - wwhzz
-                    <br />
-                    <strong>Dia 3:</strong> xxhyy - wwhzz, xxhyy - wwhzz, xxhyy - wwhzz
-                    <br />
-                    <strong>Dia 4:</strong> xxhyy - wwhzz, xxhyy - wwhzz, xxhyy - wwhzz
-                    <br />
-                    <strong>Dia 5:</strong> xxhyy - wwhzz, xxhyy - wwhzz, xxhyy - wwhzz
+                    {cand.TransformedAvailability.map((aval: { day: string | number | bigint | boolean | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | Promise<string | number | bigint | boolean | React.ReactPortal | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined> | null | undefined; hours: any[]; }) => (
+                        <><strong>{aval.day}:</strong><br /><strong>{aval.hours.join(' - ')}</strong><br /></>
+                    ))}
                   </TableCell>
                   <TableCell className="border border-orange-500 text-center align-middle" rowSpan={2}>
                     <span className="font-bold">Aprovado</span> pra próxima etapa ou não aprovado
@@ -104,8 +169,9 @@ const page = () => {
 
       <div className='flex flex-row justify-start items-start pt-8 pl-5 font-bold text-xl gap-5'>
         Entrevistadores
-        <div className="flex flex-row gap-4 justify-start items-start pt-10 w-full">
-          <Table className="border border-orange-500 w-[80%]">
+        <div className="w-full grid grid-cols-2 gap-5 pt-10">
+          {interviewrs.map((inter) => (
+            <Table className="border border-orange-500 w-full">
             {/* Cabeçalho */}
             <TableHeader className="bg-orange-500 text-white text-center">
               <TableRow>
@@ -119,60 +185,19 @@ const page = () => {
             <TableBody>
               <TableRow>
                 <TableCell className="border border-orange-500 font-semibold text-center align-middle" rowSpan={2}>
-                  Nome do Entrevistador
+                  {inter.Name}
                 </TableCell>
                 <TableCell className="border border-orange-500 text-center align-middle" rowSpan={2}>
-                  F ou M ou etc
+                  {inter.Gender}
                 </TableCell>
                 <TableCell className="border border-orange-500 p-2">
-                  <strong>Dia 1:</strong> xxhyy - wwhzz, xxhyy - wwhzz, xxhyy - wwhzz
-                  <br />
-                  <strong>Dia 2:</strong> xxhyy - wwhzz, xxhyy - wwhzz, xxhyy - wwhzz
-                  <br />
-                  <strong>Dia 3:</strong> xxhyy - wwhzz, xxhyy - wwhzz, xxhyy - wwhzz
-                  <br />
-                  <strong>Dia 4:</strong> xxhyy - wwhzz, xxhyy - wwhzz, xxhyy - wwhzz
-                  <br />
-                  <strong>Dia 5:</strong> xxhyy - wwhzz, xxhyy - wwhzz, xxhyy - wwhzz
+                  {inter.TransformedAvailability.map((aval: { day: string | number | bigint | boolean | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | Promise<string | number | bigint | boolean | React.ReactPortal | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined> | null | undefined; hours: any[]; }) => (
+                        <><strong>{aval.day}:</strong><br /><strong>{aval.hours.join(' - ')}</strong><br /></>))}
                 </TableCell>
               </TableRow>
             </TableBody>
           </Table>
-
-          <Table className="border border-orange-500 w-[80%]">
-            {/* Cabeçalho */}
-            <TableHeader className="bg-orange-500 text-white text-center">
-              <TableRow>
-                <TableHead className="border border-orange-500 text-center w-40 text-black">Nome</TableHead>
-                <TableHead className="bg-stone-50 w-35 text-center text-black">Gênero</TableHead>
-                <TableHead className="border border-orange-500 text-center w-80 text-black">Disponibilidade</TableHead>
-              </TableRow>
-            </TableHeader>
-
-            {/* Corpo da Tabela */}
-            <TableBody>
-              <TableRow>
-                <TableCell className="border border-orange-500 font-semibold text-center align-middle" rowSpan={2}>
-                  Nome do Entrevistador
-                </TableCell>
-                <TableCell className="border border-orange-500 text-center align-middle" rowSpan={2}>
-                  F ou M ou etc
-                </TableCell>
-                <TableCell className="border border-orange-500 p-2">
-                  <strong>Dia 1:</strong> xxhyy - wwhzz, xxhyy - wwhzz, xxhyy - wwhzz
-                  <br />
-                  <strong>Dia 2:</strong> xxhyy - wwhzz, xxhyy - wwhzz, xxhyy - wwhzz
-                  <br />
-                  <strong>Dia 3:</strong> xxhyy - wwhzz, xxhyy - wwhzz, xxhyy - wwhzz
-                  <br />
-                  <strong>Dia 4:</strong> xxhyy - wwhzz, xxhyy - wwhzz, xxhyy - wwhzz
-                  <br />
-                  <strong>Dia 5:</strong> xxhyy - wwhzz, xxhyy - wwhzz, xxhyy - wwhzz
-                </TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-
+          ))}
         </div>
       </div>
 
