@@ -1,223 +1,202 @@
-import { useEffect, useState } from 'react'
-import { TableSlot, SlotsType, TableData, Slot } from './types'
-import { Button } from '@nextui-org/react'
-import EditFieldIcon from './edit-field-icon'
-import EditFieldPopup from './edit-field-popup'
-import { collection, getDocs } from 'firebase/firestore'
-import { db } from '@/firebase/firebase-config'
+import { useEffect, useState } from "react";
+import { TableSlot, SlotsType, TableData, Slot, Person } from "./types";
+import { Button } from "@nextui-org/react";
+import EditFieldIcon from "./edit-field-icon";
+import EditFieldPopup from "./edit-field-popup";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "@/firebase/firebase-config";
+import { toast } from "sonner";
+import { formatTime } from "@/constants/utils";
 
 const dataPlaceholderEntrevistas: TableData[] = [
   {
-    date: '2025-02-12',
-    place: 'local reservado',
+    date: "2025-02-12",
+    place: "local reservado",
     slots: [
       {
-        time: '08:00',
-        candidates: ['Nome do candidato'],
-        interviewers: ['Nome do entrevistador', 'Nome do entrevistador'],
+        time: "08:00",
+        candidates: ["Nome do candidato"],
+        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
       },
       {
-        time: '09:00',
-        candidates: ['Nome do candidato'],
-        interviewers: ['Nome do entrevistador', 'Nome do entrevistador'],
+        time: "09:00",
+        candidates: ["Nome do candidato"],
+        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
       },
       {
-        time: '10:00',
-        candidates: ['Nome do candidato'],
-        interviewers: ['Nome do entrevistador', 'Nome do entrevistador'],
+        time: "10:00",
+        candidates: ["Nome do candidato"],
+        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
       },
       {
-        time: '11:00',
-        candidates: ['Nome do candidato'],
-        interviewers: ['Nome do entrevistador', 'Nome do entrevistador'],
+        time: "11:00",
+        candidates: ["Nome do candidato"],
+        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
       },
       {
-        time: '12:00',
+        time: "12:00",
         candidates: [
-          'nome MUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUITO GRAAAAAAAAANDE',
+          "nome MUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUITO GRAAAAAAAAANDE",
         ],
-        interviewers: ['Nome do entrevistador', 'Nome do entrevistador'],
+        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
       },
     ],
   },
   {
-    date: '2025-02-13',
-    place: 'local reservado',
+    date: "2025-02-13",
+    place: "local reservado",
     slots: [
       {
-        time: '08:00',
-        candidates: ['Nome do candidato'],
-        interviewers: ['Nome do entrevistador', 'Nome do entrevistador'],
+        time: "08:00",
+        candidates: ["Nome do candidato"],
+        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
       },
       {
-        time: '09:00',
-        candidates: ['Nome do candidato'],
-        interviewers: ['Nome do entrevistador', 'Nome do entrevistador'],
+        time: "09:00",
+        candidates: ["Nome do candidato"],
+        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
       },
       {
-        time: '10:00',
-        candidates: ['Nome do candidato'],
-        interviewers: ['Nome do entrevistador', 'Nome do entrevistador'],
+        time: "10:00",
+        candidates: ["Nome do candidato"],
+        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
       },
       {
-        time: '11:00',
-        candidates: ['Nome do candidato'],
-        interviewers: ['Nome do entrevistador', 'Nome do entrevistador'],
+        time: "11:00",
+        candidates: ["Nome do candidato"],
+        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
       },
     ],
   },
   {
-    date: '2025-02-14',
-    place: 'local reservado',
+    date: "2025-02-14",
+    place: "local reservado",
     slots: [
       {
-        time: '08:00',
-        candidates: ['Nome do candidato'],
-        interviewers: ['Nome do entrevistador', 'Nome do entrevistador'],
+        time: "08:00",
+        candidates: ["Nome do candidato"],
+        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
       },
       {
-        time: '09:00',
-        candidates: ['Nome do candidato'],
-        interviewers: ['Nome do entrevistador', 'Nome do entrevistador'],
+        time: "09:00",
+        candidates: ["Nome do candidato"],
+        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
       },
       {
-        time: '10:00',
-        candidates: ['Nome do candidato'],
-        interviewers: ['Nome do entrevistador', 'Nome do entrevistador'],
+        time: "10:00",
+        candidates: ["Nome do candidato"],
+        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
       },
       {
-        time: '11:00',
-        candidates: ['Nome do candidato'],
-        interviewers: ['Nome do entrevistador', 'Nome do entrevistador'],
+        time: "11:00",
+        candidates: ["Nome do candidato"],
+        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
       },
     ],
   },
   {
-    date: '2025-02-17',
-    place: 'local reservado',
+    date: "2025-02-17",
+    place: "local reservado",
     slots: [
       {
-        time: '08:00',
-        candidates: ['Nome do candidato'],
-        interviewers: ['Nome do entrevistador', 'Nome do entrevistador'],
+        time: "08:00",
+        candidates: ["Nome do candidato"],
+        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
       },
       {
-        time: '09:00',
-        candidates: ['Nome do candidato'],
-        interviewers: ['Nome do entrevistador', 'Nome do entrevistador'],
+        time: "09:00",
+        candidates: ["Nome do candidato"],
+        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
       },
       {
-        time: '10:00',
-        candidates: ['Nome do candidato'],
-        interviewers: ['Nome do entrevistador', 'Nome do entrevistador'],
+        time: "10:00",
+        candidates: ["Nome do candidato"],
+        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
       },
       {
-        time: '11:00',
-        candidates: ['Nome do candidato'],
-        interviewers: ['Nome do entrevistador', 'Nome do entrevistador'],
+        time: "11:00",
+        candidates: ["Nome do candidato"],
+        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
       },
     ],
   },
   {
-    date: '2025-02-18',
-    place: 'local reservado',
+    date: "2025-02-18",
+    place: "local reservado",
     slots: [
       {
-        time: '08:00',
-        candidates: ['Nome do candidato'],
-        interviewers: ['Nome do entrevistador', 'Nome do entrevistador'],
+        time: "08:00",
+        candidates: ["Nome do candidato"],
+        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
       },
       {
-        time: '09:00',
-        candidates: ['Nome do candidato'],
-        interviewers: ['Nome do entrevistador', 'Nome do entrevistador'],
+        time: "09:00",
+        candidates: ["Nome do candidato"],
+        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
       },
       {
-        time: '10:00',
-        candidates: ['Nome do candidato'],
-        interviewers: ['Nome do entrevistador', 'Nome do entrevistador'],
+        time: "10:00",
+        candidates: ["Nome do candidato"],
+        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
       },
       {
-        time: '11:00',
-        candidates: ['Nome do candidato'],
-        interviewers: ['Nome do entrevistador', 'Nome do entrevistador'],
+        time: "11:00",
+        candidates: ["Nome do candidato"],
+        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
       },
     ],
   },
   {
-    date: '2025-02-19',
-    place: 'local reservado',
+    date: "2025-02-19",
+    place: "local reservado",
     slots: [
       {
-        time: '08:00',
-        candidates: ['Nome do candidato'],
-        interviewers: ['Nome do entrevistador', 'Nome do entrevistador'],
+        time: "08:00",
+        candidates: ["Nome do candidato"],
+        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
       },
       {
-        time: '09:00',
-        candidates: ['Nome do candidato'],
-        interviewers: ['Nome do entrevistador', 'Nome do entrevistador'],
+        time: "09:00",
+        candidates: ["Nome do candidato"],
+        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
       },
       {
-        time: '10:00',
-        candidates: ['Nome do candidato'],
-        interviewers: ['Nome do entrevistador', 'Nome do entrevistador'],
+        time: "10:00",
+        candidates: ["Nome do candidato"],
+        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
       },
       {
-        time: '11:00',
-        candidates: ['Nome do candidato'],
-        interviewers: ['Nome do entrevistador', 'Nome do entrevistador'],
+        time: "11:00",
+        candidates: ["Nome do candidato"],
+        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
       },
     ],
   },
-]
+];
 
 interface SlotsTableProps {
-  slotsType: SlotsType
-}
-
-function formatDate(dataString: string): string {
-  const date = new Date(dataString + 'T00:00:00')
-
-  const formattedDate = new Intl.DateTimeFormat('pt-BR', {
-    weekday: 'long',
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric',
-  }).format(date)
-
-  return formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1)
-}
-
-function formatTime(time: string): string {
-  const [hour, minute] = time.split(':').map(Number)
-  const finalHour = (hour + 2) % 24
-  const formattedHour = hour.toString().padStart(2, '0')
-  const formattedFinalHour = finalHour.toString().padStart(2, '0')
-  const formattedMinute = minute.toString().padStart(2, '0')
-
-  return `${formattedHour}h${formattedMinute} - ${formattedFinalHour}h${formattedMinute}`
+  slotsType: SlotsType;
 }
 
 async function getLatestMatchingSlots() {
   try {
-    const querySnapshot = await getDocs(collection(db, 'latest_matching'))
+    const querySnapshot = await getDocs(collection(db, "latest_matching"));
 
     if (querySnapshot.empty) {
-      console.log('Nenhum documento encontrado na coleção latest_matching')
-      return []
+      console.log("Nenhum documento encontrado na coleção latest_matching");
+      return [];
     }
 
-    const data = querySnapshot.docs[0].data()
-    const slots = data.slots || []
+    const data = querySnapshot.docs[0].data();
+    const slots = data.slots || [];
 
     // Agrupa os slots por "day" e "local"
-    const grouped: Record<string, TableData> = {}
+    const grouped: Record<string, TableData> = {};
 
     slots.forEach((slot: Slot) => {
       // Extraia as propriedades de cada slot
-      const { date, place, time, candidates, interviewers } = slot
-      const key = `${date}_${place}`
+      const { date, place, time, candidates, interviewers } = slot;
+      const key = `${date}_${place}`;
 
       // Se ainda não existir o grupo para essa chave, cria-o
       if (!grouped[key]) {
@@ -225,7 +204,7 @@ async function getLatestMatchingSlots() {
           date: date,
           place: place,
           slots: [],
-        }
+        };
       }
 
       // Adiciona o horário (no formato Horario) ao array "horarios"
@@ -233,70 +212,114 @@ async function getLatestMatchingSlots() {
         time,
         candidates,
         interviewers,
-      })
-    })
+      });
+    });
 
     // Retorna um array de TableData
     return Object.values(grouped).sort((a, b) => {
-      const dateA = new Date(a.date)
-      const dateB = new Date(b.date)
-      return dateA.getTime() - dateB.getTime() // Ordena em ordem crescente
-    })
+      const dateA = new Date(a.date);
+      const dateB = new Date(b.date);
+      return dateA.getTime() - dateB.getTime(); // Ordena em ordem crescente
+    });
   } catch (error) {
-    console.error('Erro ao obter os slots:', error)
-    return []
+    console.error("Erro ao obter os slots:", error);
+    return [];
   }
+}
+
+function formatDateTable(dataString: string): string {
+  const date = new Date(dataString + "T00:00:00");
+
+  const formattedDate = new Intl.DateTimeFormat("pt-BR", {
+    weekday: "long",
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  }).format(date);
+
+  return formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
 }
 
 export default function SlotsTable({ slotsType }: SlotsTableProps) {
   const slotPlaceholder = {
-    time: '--:--',
+    time: "--:--",
     candidates: [],
     interviewers: [],
-  }
+  };
 
   const dayPlaceholder = {
-    date: '../../....',
-    place: '...',
+    date: "../../....",
+    place: "...",
     slots: [],
-  }
+  };
 
-  const [isOpen, setIsOpen] = useState<boolean>(false)
-  const [selectedSlot, setSelectedSlot] = useState<TableSlot>(slotPlaceholder)
-  const [selectedDay, setSelectedDay] = useState<TableData>(dayPlaceholder)
-  const [loading, setLoading] = useState<boolean>(true)
-  const [data, setData] = useState<TableData[]>([])
-  const [names, setNames] = useState<string[]>([])
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [selectedSlot, setSelectedSlot] = useState<TableSlot>(slotPlaceholder);
+  const [selectedDay, setSelectedDay] = useState<TableData>(dayPlaceholder);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [data, setData] = useState<TableData[]>([]);
+  const [candidates, setCandidates] = useState<string[]>([]);
+  const [interviewers, setInterviewers] = useState<string[]>([]);
+  const [places, setPlaces] = useState<string[]>([]);
 
   useEffect(() => {
     if (slotsType == SlotsType.dinamicas) {
       getLatestMatchingSlots().then((tableData) => {
-        console.log(tableData)
-        setData(tableData)
-      })
+        setData(tableData);
+      });
     } else {
-      setData(dataPlaceholderEntrevistas) // provisório
+      setData(dataPlaceholderEntrevistas); // provisório
     }
-  }, [slotsType])
+  }, [slotsType]);
 
   useEffect(() => {
-    async function fetchEnrollments() {
+    // async function fetchEnrollments() {
+    //   try {
+    //     const querySnapshot = await getDocs(collection(db, "enrollments"));
+    //     const enrollmentsNames = querySnapshot.docs.map(
+    //       (doc) => doc.data().name
+    //     );
+    //     setCandidates(enrollmentsNames);
+    //   } catch (error) {
+    //     console.error("Erro ao buscar candidatos: ", error);
+    //   }
+    // }
+
+    async function fetchOptions() {
       try {
-        const querySnapshot = await getDocs(collection(db, 'enrollments'))
-        const enrollmentsNames = querySnapshot.docs.map(
-          (doc) => doc.data().name
-        )
-        setNames(enrollmentsNames)
-        // setNames(['nome1', 'nome2', 'nome3', 'nome4'])
+        const querySnapshot =
+          slotsType == SlotsType.dinamicas
+            ? await getDocs(collection(db, "tests_1"))
+            : await getDocs(collection(db, "tests_2"));
+        if (!querySnapshot.empty) {
+          const data = querySnapshot.docs[0].data();
+          const interviewers = data.Interviewers;
+          const interviewersNames = interviewers.map((interviewer: Person) => {
+            return interviewer.Name;
+          });
+          setInterviewers(interviewersNames);
+
+          const places = data.AvailableSlots.places;
+          setPlaces(places);
+
+          const candidates = data.Candidates;
+          const candidatesNames = candidates.map((candidate: Person) => {
+            return candidate.Name;
+          });
+          setCandidates(candidatesNames);
+        } else {
+          toast.error("Nenhum documento encontrado na coleção tests_1");
+        }
       } catch (error) {
-        console.error('Erro ao buscar nomes: ', error)
+        console.error("Erro ao buscar dados: ", error);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
     }
 
-    fetchEnrollments()
-  }, [])
+    // fetchEnrollments();
+    fetchOptions();
+  }, []);
 
   return loading ? (
     <div className="flex h-screen justify-center items-center">
@@ -305,8 +328,8 @@ export default function SlotsTable({ slotsType }: SlotsTableProps) {
   ) : (
     <div className="p-8">
       <h1 className="text-5xl font-bold mb-4 font-poppins">
-        Horários -{' '}
-        {slotsType == SlotsType.dinamicas ? 'Dinâmicas' : 'Entrevistas'}
+        Horários -{" "}
+        {slotsType == SlotsType.dinamicas ? "Dinâmicas" : "Entrevistas"}
       </h1>
       <table className="w-full border-l table-fixed border-orange-conpec text-[13px] font-lato">
         {data.map((day, i) => {
@@ -314,10 +337,10 @@ export default function SlotsTable({ slotsType }: SlotsTableProps) {
             <tbody key={i}>
               <tr className="bg-[#FFF4EF]">
                 <th className="bg-orange-conpec text-white w-[200px]">
-                  {formatDate(day.date)}
+                  {formatDateTable(day.date)}
                 </th>
                 {day.slots.map((slot, j) => {
-                  const formattedTime = formatTime(slot.time)
+                  const formattedTime = formatTime(slot.time);
                   return (
                     <th
                       key={j}
@@ -328,16 +351,16 @@ export default function SlotsTable({ slotsType }: SlotsTableProps) {
                         <Button
                           className="absolute right-0 p-2 rounded mr-3"
                           onPress={() => {
-                            setIsOpen(true)
-                            setSelectedSlot(slot)
-                            setSelectedDay(day)
+                            setIsOpen(true);
+                            setSelectedSlot(slot);
+                            setSelectedDay(day);
                           }}
                         >
                           <EditFieldIcon />
                         </Button>
                       </div>
                     </th>
-                  )
+                  );
                 })}
               </tr>
               <tr>
@@ -369,7 +392,7 @@ export default function SlotsTable({ slotsType }: SlotsTableProps) {
                 ))}
               </tr>
             </tbody>
-          )
+          );
         })}
       </table>
       {isOpen && (
@@ -377,13 +400,16 @@ export default function SlotsTable({ slotsType }: SlotsTableProps) {
           data={data}
           selectedSlot={selectedSlot}
           selectedDay={selectedDay}
-          names={names}
+          candidates={candidates}
+          interviewers={interviewers}
           slotsType={slotsType}
+          places={places}
           setData={setData}
           setIsOpen={setIsOpen}
           setSelectedSlot={setSelectedSlot}
+          setSelectedDay={setSelectedDay}
         />
       )}
     </div>
-  )
+  );
 }

@@ -6,22 +6,7 @@ import { useState } from "react";
 import Select, { StylesConfig } from "react-select";
 import { db } from "@/firebase/firebase-config";
 import { collection, addDoc } from "firebase/firestore";
-
-interface DayTimes {
-  date: string;
-  times: Option[];
-}
-
-interface Place {
-  place: string;
-  date: string;
-  times: Option[];
-}
-
-interface Option {
-  value: string;
-  label: string;
-}
+import { Option, DayTimes, Place } from "@/constants/select_options";
 
 export default function StepsInfoPage() {
   const [minCandidates, setMinCandidates] = useState<Option>({
@@ -42,7 +27,7 @@ export default function StepsInfoPage() {
   ]);
 
   const [places, setPlaces] = useState<Place[]>([
-    { place: "", date: "", times: [] as Option[] },
+    { place: "", date: "", times: [] },
   ]);
 
   const numInterviewersOptions = [
@@ -157,7 +142,7 @@ export default function StepsInfoPage() {
       {
         place: "",
         date: "",
-        times: [] as Option[],
+        times: [],
       },
     ]);
   };

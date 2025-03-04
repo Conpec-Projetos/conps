@@ -30,3 +30,9 @@ export interface FirestoreSlot {
   candidates: string[];
   interviewers: string[];
 }
+
+export interface Person {
+  Availability: Map<string, string[]>;
+  Gender: string;
+  Name: string;
+}
