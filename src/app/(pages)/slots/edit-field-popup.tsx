@@ -2,7 +2,7 @@ import { Button } from "@nextui-org/react";
 import { TableSlot, SlotsType, TableData } from "./types";
 import { updateDoc, getDocs, collection } from "firebase/firestore";
 import { db } from "@/firebase/firebase-config";
-// import { toast } from "sonner";
+import { toast } from "sonner";
 import Select, { StylesConfig } from "react-select";
 import { getAllDayOptions, timeOptions } from "@/constants/select_options";
 import { Option } from "@/constants/select_options";
@@ -32,7 +32,7 @@ function formatDatePopup(dataString: string): string {
     month: "2-digit",
   }).format(date);
 
-  return formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
+  return formattedDate;
 }
 
 export default function EditFieldPopup({
@@ -52,9 +52,10 @@ export default function EditFieldPopup({
   const numCandidates = maxCandidates;
   const numInterviewers = 2;
 
-  const [oldTime, setOldTime] = useState<string>("");
-  const [oldDate, setOldDate] = useState<string>("");
-  const [oldPlace, setOldPlace] = useState<string>("");
+  const [oldTime, setOldTime] = useState<string>();
+  const [oldDate, setOldDate] = useState<string>();
+  const [oldPlace, setOldPlace] = useState<string>();
+  const [disableSaveButton, setDisableSaveButton] = useState<boolean>(false);
 
   useEffect(() => {
     setOldTime(selectedSlot.time);
@@ -113,6 +114,28 @@ export default function EditFieldPopup({
 
   const labels = getInitialLabels();
 
+  const isTargetedSlotFilled = (
+    date: string,
+    time: string,
+    place: string
+  ): boolean => {
+    const slot = convertTableDataToSlots(data).find(
+      (slot) => slot.date === date && slot.time === time && slot.place === place
+    );
+
+    if (!slot) return false;
+
+    for (const candidate of slot.candidates) {
+      if (candidate !== "") return true;
+    }
+
+    for (const interviewer of slot.interviewers) {
+      if (interviewer !== "") return true;
+    }
+
+    return false;
+  };
+
   const handleSelectChange = (index: number, newValue: string) => {
     if (index < numCandidates) {
       const updatedCandidates = [...selectedSlot.candidates];
@@ -123,12 +146,29 @@ export default function EditFieldPopup({
       updatedInterviewers[index - numCandidates] = newValue;
       setSelectedSlot({ ...selectedSlot, interviewers: updatedInterviewers });
     } else if (index === numCandidates + numInterviewers) {
-      // moveSelectedSlotToNewDay(oldValue, newValue);
       setSelectedDay({ ...selectedDay, date: newValue });
+      setDisableSaveButton(
+        isTargetedSlotFilled(newValue, selectedSlot.time, selectedDay.place) &&
+          (newValue !== oldDate ||
+            selectedSlot.time !== oldTime ||
+            selectedDay.place !== oldPlace)
+      );
     } else if (index === numCandidates + numInterviewers + 1) {
       setSelectedSlot({ ...selectedSlot, time: newValue });
+      setDisableSaveButton(
+        isTargetedSlotFilled(selectedDay.date, newValue, selectedDay.place) &&
+          (newValue !== oldTime ||
+            selectedDay.date !== oldDate ||
+            selectedDay.place !== oldPlace)
+      );
     } else if (index === numCandidates + numInterviewers + 2) {
       setSelectedDay({ ...selectedDay, place: newValue });
+      setDisableSaveButton(
+        isTargetedSlotFilled(selectedDay.date, selectedSlot.time, newValue) &&
+          (newValue !== oldPlace ||
+            selectedDay.date !== oldDate ||
+            selectedSlot.time !== oldTime)
+      );
     }
   };
 
@@ -232,20 +272,17 @@ export default function EditFieldPopup({
         const docRef = querySnapshot.docs[0].ref;
         await updateDoc(docRef, { slots: firestoreSlots });
         setData(newData);
-        // toast.success("Dados atualizados com sucesso!");
+        toast.success("Dados atualizados com sucesso!");
       } else {
-        // toast.error("Nenhum documento encontrado na coleção latest_matching");
+        toast.error("Nenhum documento encontrado na coleção latest_matching");
       }
     } catch (error) {
-      // toast.error("Erro ao atualizar o documento no Firestore");
       console.error("Erro ao atualizar o documento no Firestore:", error);
+      toast.error("Erro ao atualizar o documento no Firestore");
     }
 
     setIsOpen(false);
   };
-
-  const popupSelectStyle =
-    "w-full border border-orange-conpec rounded text-[13px] font-bold";
 
   const popupSelectStylesConfig: StylesConfig = {
     control: (provided) => ({
@@ -280,7 +317,7 @@ export default function EditFieldPopup({
     if (index < numCandidates) {
       return [{ value: "", label: "" }].concat(candidateOptions);
     } else if (index < numCandidates + numInterviewers) {
-      return interviewerOptions;
+      return [{ value: "", label: "" }].concat(interviewerOptions);
     } else if (index === numCandidates + numInterviewers) {
       return getAllDayOptions(slotsType);
     } else if (index === numCandidates + numInterviewers + 1) {
@@ -308,7 +345,7 @@ export default function EditFieldPopup({
               </label>
               <Select
                 instanceId={`${selectedDay.place}-${selectedDay.date}-${selectedSlot.time}-${index}`}
-                className={popupSelectStyle}
+                className="w-full border border-orange-conpec rounded text-[13px] font-bold"
                 value={options[index]}
                 styles={popupSelectStylesConfig}
                 options={getPopupSelectOptions(index)}
@@ -321,8 +358,11 @@ export default function EditFieldPopup({
           ))}
         </div>
         <Button
-          className="block mt-4 mx-auto w-[221px] h-[33px] transition bg-orange-conpec text-white rounded-[5px]"
+          className={`block mt-4 mx-auto w-[221px] h-[33px] transition ${
+            disableSaveButton ? "bg-slate-400" : "bg-orange-conpec"
+          } text-white rounded-[5px]`}
           onPress={() => handleSave()}
+          isDisabled={disableSaveButton}
         >
           Salvar
         </Button>

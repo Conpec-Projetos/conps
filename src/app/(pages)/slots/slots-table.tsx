@@ -1,178 +1,12 @@
 import { useEffect, useState } from "react";
-import { TableSlot, SlotsType, TableData, Slot, Person } from "./types";
+import { TableSlot, SlotsType, TableData, Person } from "./types";
 import { Button } from "@nextui-org/react";
 import EditFieldIcon from "./edit-field-icon";
 import EditFieldPopup from "./edit-field-popup";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/firebase/firebase-config";
-import { toast } from "sonner";
-import { formatTime } from "@/constants/utils";
-
-// const dataPlaceholderEntrevistas: TableData[] = [
-//   {
-//     date: "2025-02-12",
-//     place: "local reservado",
-//     slots: [
-//       {
-//         time: "08:00",
-//         candidates: ["Nome do candidato"],
-//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-//       },
-//       {
-//         time: "09:00",
-//         candidates: ["Nome do candidato"],
-//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-//       },
-//       {
-//         time: "10:00",
-//         candidates: ["Nome do candidato"],
-//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-//       },
-//       {
-//         time: "11:00",
-//         candidates: ["Nome do candidato"],
-//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-//       },
-//       {
-//         time: "12:00",
-//         candidates: [
-//           "nome MUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUITO GRAAAAAAAAANDE",
-//         ],
-//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-//       },
-//     ],
-//   },
-//   {
-//     date: "2025-02-13",
-//     place: "local reservado",
-//     slots: [
-//       {
-//         time: "08:00",
-//         candidates: ["Nome do candidato"],
-//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-//       },
-//       {
-//         time: "09:00",
-//         candidates: ["Nome do candidato"],
-//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-//       },
-//       {
-//         time: "10:00",
-//         candidates: ["Nome do candidato"],
-//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-//       },
-//       {
-//         time: "11:00",
-//         candidates: ["Nome do candidato"],
-//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-//       },
-//     ],
-//   },
-//   {
-//     date: "2025-02-14",
-//     place: "local reservado",
-//     slots: [
-//       {
-//         time: "08:00",
-//         candidates: ["Nome do candidato"],
-//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-//       },
-//       {
-//         time: "09:00",
-//         candidates: ["Nome do candidato"],
-//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-//       },
-//       {
-//         time: "10:00",
-//         candidates: ["Nome do candidato"],
-//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-//       },
-//       {
-//         time: "11:00",
-//         candidates: ["Nome do candidato"],
-//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-//       },
-//     ],
-//   },
-//   {
-//     date: "2025-02-17",
-//     place: "local reservado",
-//     slots: [
-//       {
-//         time: "08:00",
-//         candidates: ["Nome do candidato"],
-//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-//       },
-//       {
-//         time: "09:00",
-//         candidates: ["Nome do candidato"],
-//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-//       },
-//       {
-//         time: "10:00",
-//         candidates: ["Nome do candidato"],
-//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-//       },
-//       {
-//         time: "11:00",
-//         candidates: ["Nome do candidato"],
-//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-//       },
-//     ],
-//   },
-//   {
-//     date: "2025-02-18",
-//     place: "local reservado",
-//     slots: [
-//       {
-//         time: "08:00",
-//         candidates: ["Nome do candidato"],
-//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-//       },
-//       {
-//         time: "09:00",
-//         candidates: ["Nome do candidato"],
-//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-//       },
-//       {
-//         time: "10:00",
-//         candidates: ["Nome do candidato"],
-//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-//       },
-//       {
-//         time: "11:00",
-//         candidates: ["Nome do candidato"],
-//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-//       },
-//     ],
-//   },
-//   {
-//     date: "2025-02-19",
-//     place: "local reservado",
-//     slots: [
-//       {
-//         time: "08:00",
-//         candidates: ["Nome do candidato"],
-//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-//       },
-//       {
-//         time: "09:00",
-//         candidates: ["Nome do candidato"],
-//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-//       },
-//       {
-//         time: "10:00",
-//         candidates: ["Nome do candidato"],
-//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-//       },
-//       {
-//         time: "11:00",
-//         candidates: ["Nome do candidato"],
-//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-//       },
-//     ],
-//   },
-// ];
+import { toast, Toaster } from "sonner";
+import { convertSlotsToTableData, formatTime } from "@/constants/utils";
 
 interface SlotsTableProps {
   slotsType: SlotsType;
@@ -193,37 +27,7 @@ async function getLatestMatchingSlots(slotsType: SlotsType) {
     const data = querySnapshot.docs[0].data();
     const slots = data.slots || [];
 
-    // Agrupa os slots por "day" e "local"
-    const grouped: Record<string, TableData> = {};
-
-    slots.forEach((slot: Slot) => {
-      // Extraia as propriedades de cada slot
-      const { date, place, time, candidates, interviewers } = slot;
-      const key = `${date}_${place}`;
-
-      // Se ainda não existir o grupo para essa chave, cria-o
-      if (!grouped[key]) {
-        grouped[key] = {
-          date: date,
-          place: place,
-          slots: [],
-        };
-      }
-
-      // Adiciona o horário (no formato Horario) ao array "horarios"
-      grouped[key].slots.push({
-        time,
-        candidates,
-        interviewers,
-      });
-    });
-
-    // Retorna um array de TableData
-    return Object.values(grouped).sort((a, b) => {
-      const dateA = new Date(a.date);
-      const dateB = new Date(b.date);
-      return dateA.getTime() - dateB.getTime(); // Ordena em ordem crescente
-    });
+    return convertSlotsToTableData(slots);
   } catch (error) {
     console.error("Erro ao obter os slots:", error);
     return [];
@@ -244,21 +48,9 @@ function formatDateTable(dataString: string): string {
 }
 
 export default function SlotsTable({ slotsType }: SlotsTableProps) {
-  const slotPlaceholder = {
-    time: "--:--",
-    candidates: [],
-    interviewers: [],
-  };
-
-  const dayPlaceholder = {
-    date: "../../....",
-    place: "...",
-    slots: [],
-  };
-
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [selectedSlot, setSelectedSlot] = useState<TableSlot>(slotPlaceholder);
-  const [selectedDay, setSelectedDay] = useState<TableData>(dayPlaceholder);
+  const [selectedSlot, setSelectedSlot] = useState<TableSlot>();
+  const [selectedDay, setSelectedDay] = useState<TableData>();
   const [loading, setLoading] = useState<boolean>(true);
   const [data, setData] = useState<TableData[]>([]);
   const [candidates, setCandidates] = useState<string[]>([]);
@@ -273,18 +65,6 @@ export default function SlotsTable({ slotsType }: SlotsTableProps) {
   }, [slotsType]);
 
   useEffect(() => {
-    // async function fetchEnrollments() {
-    //   try {
-    //     const querySnapshot = await getDocs(collection(db, "enrollments"));
-    //     const enrollmentsNames = querySnapshot.docs.map(
-    //       (doc) => doc.data().name
-    //     );
-    //     setCandidates(enrollmentsNames);
-    //   } catch (error) {
-    //     console.error("Erro ao buscar candidatos: ", error);
-    //   }
-    // }
-
     async function fetchOptions() {
       try {
         const querySnapshot =
@@ -311,16 +91,17 @@ export default function SlotsTable({ slotsType }: SlotsTableProps) {
         } else {
           toast.error("Nenhum documento encontrado na coleção tests_1");
         }
+        toast.success("Dados carregados com sucesso!");
       } catch (error) {
         console.error("Erro ao buscar dados: ", error);
+        toast.error("Erro ao buscar dados");
       } finally {
         setLoading(false);
       }
     }
 
-    // fetchEnrollments();
     fetchOptions();
-  }, []);
+  }, [slotsType]);
 
   return loading ? (
     <div className="flex h-screen justify-center items-center">
@@ -396,7 +177,7 @@ export default function SlotsTable({ slotsType }: SlotsTableProps) {
           );
         })}
       </table>
-      {isOpen && (
+      {isOpen && selectedSlot && selectedDay && (
         <EditFieldPopup
           data={data}
           selectedSlot={selectedSlot}
@@ -412,6 +193,7 @@ export default function SlotsTable({ slotsType }: SlotsTableProps) {
           setSelectedDay={setSelectedDay}
         />
       )}
+      <Toaster richColors closeButton position="top-right" />
     </div>
   );
 }

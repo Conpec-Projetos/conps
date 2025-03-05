@@ -7,6 +7,7 @@ import Select, { StylesConfig } from "react-select";
 import { db } from "@/firebase/firebase-config";
 import { collection, addDoc } from "firebase/firestore";
 import { Option, DayTimes, Place } from "@/constants/select_options";
+import { toast, Toaster } from "sonner";
 
 export default function StepsInfoPage() {
   const [minCandidates, setMinCandidates] = useState<Option>({
@@ -124,15 +125,15 @@ export default function StepsInfoPage() {
     field: "day" | "times",
     value: string | Option[]
   ) => {
-    const updated = [...daysTimes];
+    const updatedDaysTimes = [...daysTimes];
 
     if (field === "day") {
-      updated[index].date = value as string;
+      updatedDaysTimes[index].date = value as string;
     } else {
-      updated[index].times = value as Option[];
+      updatedDaysTimes[index].times = value as Option[];
     }
 
-    setDaysTimes(updated);
+    setDaysTimes(updatedDaysTimes);
   };
 
   // Funções para adicionar mais locais
@@ -183,8 +184,10 @@ export default function StepsInfoPage() {
     try {
       const docRef = await addDoc(collection(db, "data"), dataToSave);
       console.log("Documento salvo com ID:", docRef.id);
+      toast.success("Dados salvos com sucesso!");
     } catch (error) {
       console.error("Erro ao salvar os dados:", error);
+      toast.error("Erro ao salvar os dados");
     }
   };
 
@@ -387,6 +390,7 @@ export default function StepsInfoPage() {
       >
         Salvar informações
       </button>
+      <Toaster richColors closeButton position="top-right" />
     </div>
   );
 }
