@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { algorithm } from "./time_matching";
+import { Phase } from "@/constants/utils";
 
 export default function App() {
   const router = useRouter();
@@ -44,9 +45,17 @@ export default function App() {
         className="w-fit"
         size="lg"
         variant="destructive"
-        onClick={() => algorithm()}
+        onClick={() => algorithm(Phase.Dinamicas)}
       >
-        RODAR ALGORITMO
+        RODAR ALGORITMO (DINÂMICAS)
+      </Button>
+      <Button
+        className="w-fit"
+        size="lg"
+        variant="destructive"
+        onClick={() => algorithm(Phase.Entrevistas)}
+      >
+        RODAR ALGORITMO (ENTREVISTAS)
       </Button>
       <Button
         className="w-fit"

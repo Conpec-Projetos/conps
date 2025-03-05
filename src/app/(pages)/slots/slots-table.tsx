@@ -8,182 +8,185 @@ import { db } from "@/firebase/firebase-config";
 import { toast } from "sonner";
 import { formatTime } from "@/constants/utils";
 
-const dataPlaceholderEntrevistas: TableData[] = [
-  {
-    date: "2025-02-12",
-    place: "local reservado",
-    slots: [
-      {
-        time: "08:00",
-        candidates: ["Nome do candidato"],
-        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-      },
-      {
-        time: "09:00",
-        candidates: ["Nome do candidato"],
-        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-      },
-      {
-        time: "10:00",
-        candidates: ["Nome do candidato"],
-        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-      },
-      {
-        time: "11:00",
-        candidates: ["Nome do candidato"],
-        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-      },
-      {
-        time: "12:00",
-        candidates: [
-          "nome MUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUITO GRAAAAAAAAANDE",
-        ],
-        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-      },
-    ],
-  },
-  {
-    date: "2025-02-13",
-    place: "local reservado",
-    slots: [
-      {
-        time: "08:00",
-        candidates: ["Nome do candidato"],
-        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-      },
-      {
-        time: "09:00",
-        candidates: ["Nome do candidato"],
-        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-      },
-      {
-        time: "10:00",
-        candidates: ["Nome do candidato"],
-        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-      },
-      {
-        time: "11:00",
-        candidates: ["Nome do candidato"],
-        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-      },
-    ],
-  },
-  {
-    date: "2025-02-14",
-    place: "local reservado",
-    slots: [
-      {
-        time: "08:00",
-        candidates: ["Nome do candidato"],
-        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-      },
-      {
-        time: "09:00",
-        candidates: ["Nome do candidato"],
-        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-      },
-      {
-        time: "10:00",
-        candidates: ["Nome do candidato"],
-        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-      },
-      {
-        time: "11:00",
-        candidates: ["Nome do candidato"],
-        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-      },
-    ],
-  },
-  {
-    date: "2025-02-17",
-    place: "local reservado",
-    slots: [
-      {
-        time: "08:00",
-        candidates: ["Nome do candidato"],
-        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-      },
-      {
-        time: "09:00",
-        candidates: ["Nome do candidato"],
-        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-      },
-      {
-        time: "10:00",
-        candidates: ["Nome do candidato"],
-        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-      },
-      {
-        time: "11:00",
-        candidates: ["Nome do candidato"],
-        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-      },
-    ],
-  },
-  {
-    date: "2025-02-18",
-    place: "local reservado",
-    slots: [
-      {
-        time: "08:00",
-        candidates: ["Nome do candidato"],
-        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-      },
-      {
-        time: "09:00",
-        candidates: ["Nome do candidato"],
-        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-      },
-      {
-        time: "10:00",
-        candidates: ["Nome do candidato"],
-        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-      },
-      {
-        time: "11:00",
-        candidates: ["Nome do candidato"],
-        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-      },
-    ],
-  },
-  {
-    date: "2025-02-19",
-    place: "local reservado",
-    slots: [
-      {
-        time: "08:00",
-        candidates: ["Nome do candidato"],
-        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-      },
-      {
-        time: "09:00",
-        candidates: ["Nome do candidato"],
-        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-      },
-      {
-        time: "10:00",
-        candidates: ["Nome do candidato"],
-        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-      },
-      {
-        time: "11:00",
-        candidates: ["Nome do candidato"],
-        interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
-      },
-    ],
-  },
-];
+// const dataPlaceholderEntrevistas: TableData[] = [
+//   {
+//     date: "2025-02-12",
+//     place: "local reservado",
+//     slots: [
+//       {
+//         time: "08:00",
+//         candidates: ["Nome do candidato"],
+//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
+//       },
+//       {
+//         time: "09:00",
+//         candidates: ["Nome do candidato"],
+//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
+//       },
+//       {
+//         time: "10:00",
+//         candidates: ["Nome do candidato"],
+//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
+//       },
+//       {
+//         time: "11:00",
+//         candidates: ["Nome do candidato"],
+//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
+//       },
+//       {
+//         time: "12:00",
+//         candidates: [
+//           "nome MUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUITO GRAAAAAAAAANDE",
+//         ],
+//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
+//       },
+//     ],
+//   },
+//   {
+//     date: "2025-02-13",
+//     place: "local reservado",
+//     slots: [
+//       {
+//         time: "08:00",
+//         candidates: ["Nome do candidato"],
+//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
+//       },
+//       {
+//         time: "09:00",
+//         candidates: ["Nome do candidato"],
+//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
+//       },
+//       {
+//         time: "10:00",
+//         candidates: ["Nome do candidato"],
+//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
+//       },
+//       {
+//         time: "11:00",
+//         candidates: ["Nome do candidato"],
+//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
+//       },
+//     ],
+//   },
+//   {
+//     date: "2025-02-14",
+//     place: "local reservado",
+//     slots: [
+//       {
+//         time: "08:00",
+//         candidates: ["Nome do candidato"],
+//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
+//       },
+//       {
+//         time: "09:00",
+//         candidates: ["Nome do candidato"],
+//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
+//       },
+//       {
+//         time: "10:00",
+//         candidates: ["Nome do candidato"],
+//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
+//       },
+//       {
+//         time: "11:00",
+//         candidates: ["Nome do candidato"],
+//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
+//       },
+//     ],
+//   },
+//   {
+//     date: "2025-02-17",
+//     place: "local reservado",
+//     slots: [
+//       {
+//         time: "08:00",
+//         candidates: ["Nome do candidato"],
+//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
+//       },
+//       {
+//         time: "09:00",
+//         candidates: ["Nome do candidato"],
+//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
+//       },
+//       {
+//         time: "10:00",
+//         candidates: ["Nome do candidato"],
+//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
+//       },
+//       {
+//         time: "11:00",
+//         candidates: ["Nome do candidato"],
+//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
+//       },
+//     ],
+//   },
+//   {
+//     date: "2025-02-18",
+//     place: "local reservado",
+//     slots: [
+//       {
+//         time: "08:00",
+//         candidates: ["Nome do candidato"],
+//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
+//       },
+//       {
+//         time: "09:00",
+//         candidates: ["Nome do candidato"],
+//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
+//       },
+//       {
+//         time: "10:00",
+//         candidates: ["Nome do candidato"],
+//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
+//       },
+//       {
+//         time: "11:00",
+//         candidates: ["Nome do candidato"],
+//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
+//       },
+//     ],
+//   },
+//   {
+//     date: "2025-02-19",
+//     place: "local reservado",
+//     slots: [
+//       {
+//         time: "08:00",
+//         candidates: ["Nome do candidato"],
+//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
+//       },
+//       {
+//         time: "09:00",
+//         candidates: ["Nome do candidato"],
+//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
+//       },
+//       {
+//         time: "10:00",
+//         candidates: ["Nome do candidato"],
+//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
+//       },
+//       {
+//         time: "11:00",
+//         candidates: ["Nome do candidato"],
+//         interviewers: ["Nome do entrevistador", "Nome do entrevistador"],
+//       },
+//     ],
+//   },
+// ];
 
 interface SlotsTableProps {
   slotsType: SlotsType;
 }
 
-async function getLatestMatchingSlots() {
+async function getLatestMatchingSlots(slotsType: SlotsType) {
   try {
-    const querySnapshot = await getDocs(collection(db, "latest_matching"));
+    const querySnapshot =
+      slotsType == SlotsType.dinamicas
+        ? await getDocs(collection(db, "latest_matching_1"))
+        : await getDocs(collection(db, "latest_matching_2"));
 
     if (querySnapshot.empty) {
-      console.log("Nenhum documento encontrado na coleção latest_matching");
+      console.log("Nenhum documento encontrado na coleção");
       return [];
     }
 
@@ -261,15 +264,12 @@ export default function SlotsTable({ slotsType }: SlotsTableProps) {
   const [candidates, setCandidates] = useState<string[]>([]);
   const [interviewers, setInterviewers] = useState<string[]>([]);
   const [places, setPlaces] = useState<string[]>([]);
+  const [maxCandidates, setMaxCandidates] = useState<number>(6);
 
   useEffect(() => {
-    if (slotsType == SlotsType.dinamicas) {
-      getLatestMatchingSlots().then((tableData) => {
-        setData(tableData);
-      });
-    } else {
-      setData(dataPlaceholderEntrevistas); // provisório
-    }
+    getLatestMatchingSlots(slotsType).then((tableData) => {
+      setData(tableData);
+    });
   }, [slotsType]);
 
   useEffect(() => {
@@ -293,20 +293,21 @@ export default function SlotsTable({ slotsType }: SlotsTableProps) {
             : await getDocs(collection(db, "tests_2"));
         if (!querySnapshot.empty) {
           const data = querySnapshot.docs[0].data();
-          const interviewers = data.Interviewers;
-          const interviewersNames = interviewers.map((interviewer: Person) => {
-            return interviewer.Name;
-          });
-          setInterviewers(interviewersNames);
 
-          const places = data.AvailableSlots.places;
-          setPlaces(places);
-
-          const candidates = data.Candidates;
-          const candidatesNames = candidates.map((candidate: Person) => {
+          const interviewersNames = data.Interviewers.map(
+            (interviewer: Person) => {
+              return interviewer.Name;
+            }
+          );
+          const candidatesNames = data.Candidates.map((candidate: Person) => {
             return candidate.Name;
           });
+          const places = data.AvailableSlots.places;
+
+          setInterviewers(interviewersNames);
+          setPlaces(places);
           setCandidates(candidatesNames);
+          setMaxCandidates(data.MaxNumCandPerSlot);
         } else {
           toast.error("Nenhum documento encontrado na coleção tests_1");
         }
@@ -404,6 +405,7 @@ export default function SlotsTable({ slotsType }: SlotsTableProps) {
           interviewers={interviewers}
           slotsType={slotsType}
           places={places}
+          maxCandidates={maxCandidates}
           setData={setData}
           setIsOpen={setIsOpen}
           setSelectedSlot={setSelectedSlot}

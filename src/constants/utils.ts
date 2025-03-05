@@ -1,5 +1,10 @@
 import { FirestoreSlot, Slot, TableData } from "@/app/(pages)/slots/types";
 
+export enum Phase {
+  Dinamicas,
+  Entrevistas,
+}
+
 export function formatTime(time: string): string {
   const [hour, minute] = time.split(":").map(Number);
   const finalHour = (hour + 2) % 24;

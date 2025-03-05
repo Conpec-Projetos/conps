@@ -1,16 +1,12 @@
 import { Button } from "@nextui-org/react";
-import { TableSlot, SlotsType, TableData, FirestoreSlot } from "./types";
+import { TableSlot, SlotsType, TableData } from "./types";
 import { updateDoc, getDocs, collection } from "firebase/firestore";
 import { db } from "@/firebase/firebase-config";
 // import { toast } from "sonner";
 import Select, { StylesConfig } from "react-select";
-import { allDayOptions, timeOptions } from "@/constants/select_options";
+import { getAllDayOptions, timeOptions } from "@/constants/select_options";
 import { Option } from "@/constants/select_options";
-import {
-  convertSlotsToTableData,
-  convertTableDataToSlots,
-  formatTime,
-} from "@/constants/utils";
+import { convertTableDataToSlots, formatTime } from "@/constants/utils";
 import { useEffect, useMemo, useState } from "react";
 
 interface EditFieldPopupProps {
@@ -21,6 +17,7 @@ interface EditFieldPopupProps {
   interviewers: string[];
   slotsType: SlotsType;
   places: string[];
+  maxCandidates: number;
   setData: (newData: TableData[]) => void;
   setIsOpen: (isOpen: boolean) => void;
   setSelectedSlot: (newSelectedSlot: TableSlot) => void;
@@ -46,18 +43,23 @@ export default function EditFieldPopup({
   interviewers,
   slotsType,
   places,
+  maxCandidates,
   setData,
   setIsOpen,
   setSelectedSlot,
   setSelectedDay,
 }: EditFieldPopupProps) {
-  const numCandidates = slotsType == SlotsType.dinamicas ? 6 : 1;
+  const numCandidates = maxCandidates;
   const numInterviewers = 2;
 
   const [oldTime, setOldTime] = useState<string>("");
+  const [oldDate, setOldDate] = useState<string>("");
+  const [oldPlace, setOldPlace] = useState<string>("");
 
   useEffect(() => {
     setOldTime(selectedSlot.time);
+    setOldDate(selectedDay.date);
+    setOldPlace(selectedDay.place);
   }, []); // array vazio: executa apenas ao montar o componente
 
   const candidateOptions: Option[] = candidates.map((candidate) => ({
@@ -73,48 +75,12 @@ export default function EditFieldPopup({
   const getInitialLabels = (): string[] => {
     const initialLabels: string[] = [];
     for (let i = 0; i < numCandidates; i++) {
-      initialLabels.push("Candidato");
+      initialLabels.push(`Candidato ${i + 1}`);
     }
     for (let i = 0; i < numInterviewers; i++) {
-      initialLabels.push("Entrevistador");
+      initialLabels.push(`Entrevistador ${i + 1}`);
     }
     return initialLabels.concat(["Dia", "Horário", "Local"]);
-  };
-
-  const moveSelectedSlotToNewDay = (oldDate: string, newDate: string) => {
-    const firebaseSlots = convertTableDataToSlots(data);
-
-    // Encontra o slot selecionado no array de slots do Firestore
-    const selectedFirestoreSlot = firebaseSlots.find(
-      (slot) =>
-        slot.date === selectedDay.date &&
-        slot.place === selectedDay.place &&
-        slot.time === selectedSlot.time
-    );
-
-    if (!selectedFirestoreSlot) {
-      console.error("Slot não encontrado no Firestore");
-      return;
-    }
-
-    // Cria um novo slot com os mesmos dados do slot selecionado
-    // mas com a data atualizada
-    const newFirestoreSlot: FirestoreSlot = {
-      ...selectedFirestoreSlot,
-      date: newDate,
-    };
-
-    // Atualiza o slot no Firestore
-    const updatedFirestoreSlots = firebaseSlots.map((slot) =>
-      slot === selectedFirestoreSlot ? newFirestoreSlot : slot
-    );
-
-    const updatedData = convertSlotsToTableData(updatedFirestoreSlots);
-
-    setData(updatedData);
-    setSelectedDay(
-      updatedData.find((day) => day.date === newDate) || selectedDay
-    );
   };
 
   const options = useMemo(() => {
@@ -147,55 +113,125 @@ export default function EditFieldPopup({
 
   const labels = getInitialLabels();
 
-  const handleSelectChange = (
-    index: number,
-    newValue: string,
-    oldValue: string
-  ) => {
+  const handleSelectChange = (index: number, newValue: string) => {
     if (index < numCandidates) {
       const updatedCandidates = [...selectedSlot.candidates];
       updatedCandidates[index] = newValue;
       setSelectedSlot({ ...selectedSlot, candidates: updatedCandidates });
     } else if (index < numCandidates + numInterviewers) {
       const updatedInterviewers = [...selectedSlot.interviewers];
-      updatedInterviewers[index % numCandidates] = newValue;
+      updatedInterviewers[index - numCandidates] = newValue;
       setSelectedSlot({ ...selectedSlot, interviewers: updatedInterviewers });
     } else if (index === numCandidates + numInterviewers) {
-      moveSelectedSlotToNewDay(oldValue, newValue);
+      // moveSelectedSlotToNewDay(oldValue, newValue);
+      setSelectedDay({ ...selectedDay, date: newValue });
     } else if (index === numCandidates + numInterviewers + 1) {
       setSelectedSlot({ ...selectedSlot, time: newValue });
     } else if (index === numCandidates + numInterviewers + 2) {
+      setSelectedDay({ ...selectedDay, place: newValue });
     }
   };
 
-  const handleSave = async () => {
-    const updatedData = data.map((day) => {
-      if (day.date === selectedDay.date) {
+  const emptyOriginalSlot = (data: TableData[]) => {
+    return data.map((day) => {
+      if (day.date === oldDate && day.place === oldPlace) {
         return {
           ...day,
-          slots: day.slots.map((slot) => {
-            if (slot.time === oldTime) {
-              return {
-                ...selectedSlot,
-                time: selectedSlot.time,
-              };
-            }
-            return slot;
-          }),
+          slots: day.slots.map((slot) =>
+            slot.time === oldTime
+              ? {
+                  time: slot.time,
+                  candidates: [],
+                  interviewers: [],
+                }
+              : slot
+          ),
         };
       }
       return day;
     });
+  };
 
-    const firestoreSlots = convertTableDataToSlots(updatedData);
+  const fillNewSlot = (data: TableData[]) => {
+    // change time to new time
+    if (oldTime !== selectedSlot.time) {
+      setData(
+        data.map((day) => {
+          if (day.date === oldDate && day.place === oldPlace) {
+            return {
+              ...day,
+              slots: day.slots.map((slot) =>
+                slot.time === oldTime ? { ...selectedSlot } : slot
+              ),
+            };
+          }
+          return day;
+        })
+      );
+    }
+
+    // if day/place does not exist, create it
+    if (
+      !data.some(
+        (day) =>
+          day.date === selectedDay.date && day.place === selectedDay.place
+      )
+    ) {
+      return [
+        ...data,
+        {
+          date: selectedDay.date,
+          place: selectedDay.place,
+          slots: timeOptions.map((time) => {
+            if (time.value === selectedSlot.time) return { ...selectedSlot };
+            return { time: time.value, candidates: [], interviewers: [] };
+          }),
+        },
+      ];
+    }
+
+    return data.map((day) => {
+      if (day.date === selectedDay.date && day.place === selectedDay.place) {
+        const newSlots = day.slots.map((slot) => {
+          if (slot.time === selectedSlot.time) {
+            // Atualize os dados desse slot conforme necessário.
+            return { ...selectedSlot };
+          } else if (slot.time === oldTime) {
+            // Esvazie o slot com o horário antigo.
+            return {
+              time: slot.time,
+              candidates: [],
+              interviewers: [],
+            };
+          }
+          return slot;
+        });
+        return {
+          ...day,
+          slots: newSlots,
+        };
+      }
+      return day;
+    });
+  };
+
+  const handleSave = async () => {
+    let newData: TableData[] = emptyOriginalSlot(data);
+    newData = fillNewSlot(newData);
+
+    // Converte para o formato flat para enviar ao Firestore
+    const firestoreSlots = convertTableDataToSlots(newData);
 
     try {
-      const colRef = collection(db, "latest_matching");
+      const colRef =
+        slotsType === SlotsType.dinamicas
+          ? collection(db, "latest_matching_1")
+          : collection(db, "latest_matching_2");
       const querySnapshot = await getDocs(colRef);
       if (!querySnapshot.empty) {
         const docRef = querySnapshot.docs[0].ref;
         await updateDoc(docRef, { slots: firestoreSlots });
-        setData(updatedData);
+        setData(newData);
         // toast.success("Dados atualizados com sucesso!");
       } else {
         // toast.error("Nenhum documento encontrado na coleção latest_matching");
@@ -242,11 +278,11 @@ export default function EditFieldPopup({
 
   const getPopupSelectOptions = (index: number): Option[] => {
     if (index < numCandidates) {
-      return candidateOptions;
+      return [{ value: "", label: "" }].concat(candidateOptions);
     } else if (index < numCandidates + numInterviewers) {
       return interviewerOptions;
     } else if (index === numCandidates + numInterviewers) {
-      return allDayOptions;
+      return getAllDayOptions(slotsType);
     } else if (index === numCandidates + numInterviewers + 1) {
       return timeOptions;
     }
@@ -278,11 +314,7 @@ export default function EditFieldPopup({
                 options={getPopupSelectOptions(index)}
                 placeholder=""
                 onChange={(selected) =>
-                  handleSelectChange(
-                    index,
-                    (selected as Option).value,
-                    options[index].value
-                  )
+                  handleSelectChange(index, (selected as Option).value)
                 }
               />
             </div>
