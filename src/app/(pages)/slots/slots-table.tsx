@@ -67,10 +67,7 @@ export default function SlotsTable({ slotsType }: SlotsTableProps) {
   useEffect(() => {
     async function fetchOptions() {
       try {
-        const querySnapshot =
-          slotsType == SlotsType.dinamicas
-            ? await getDocs(collection(db, "tests_1"))
-            : await getDocs(collection(db, "tests_2"));
+        const querySnapshot = await getDocs(collection(db, "data"));
         if (!querySnapshot.empty) {
           const data = querySnapshot.docs[0].data();
 

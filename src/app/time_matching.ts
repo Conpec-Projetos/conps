@@ -129,13 +129,10 @@ async function saveSlotsToDB(slots: Slot[], phase: Phase) {
   }
 }
 
-async function getInfo(
-  phase: Phase
-): Promise<[Candidate[], Interviewer[], Slot[], number, number, number]> {
-  const data =
-    phase === Phase.Dinamicas
-      ? await getDocs(collection(db, "tests_1"))
-      : await getDocs(collection(db, "tests_2"));
+async function getInfo(): Promise<
+  [Candidate[], Interviewer[], Slot[], number, number, number]
+> {
+  const data = await getDocs(collection(db, "data"));
   const info = data.docs[0].data();
 
   const candidates: Candidate[] = info.Candidates.map(
@@ -487,7 +484,7 @@ async function algorithm(phase: Phase) {
     maxNumCandPerSlot,
     minNumCandPerSlot,
     numIntPerSlot,
-  ] = await getInfo(phase);
+  ] = await getInfo();
   greedyMatching(
     candidates,
     maxNumCandPerSlot,

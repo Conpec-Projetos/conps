@@ -5,7 +5,7 @@ import Logo from "@assets/conpec-full.png";
 import { useState } from "react";
 import Select, { StylesConfig } from "react-select";
 import { db } from "@/firebase/firebase-config";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, deleteDoc, getDocs } from "firebase/firestore";
 import { Option, DayTimes, Place } from "@/constants/select_options";
 import { toast, Toaster } from "sonner";
 
@@ -164,25 +164,42 @@ export default function StepsInfoPage() {
     setPlaces(updatedPlaces);
   };
 
+  const daysTimesToMap = (
+    datetimes: DayTimes[]
+  ): { [key: string]: string[] } => {
+    return datetimes.reduce((acc, item) => {
+      acc[item.date] = item.times.map((option) => option.value);
+      return acc;
+    }, {} as { [key: string]: string[] });
+  };
+
   // Função para salvar as informações
   const handleSave = async () => {
     const dataToSave = {
-      minCandidates: Number(minCandidates.value),
-      maxCandidates: Number(maxCandidates.value),
-      numInterviewers: Number(numInterviewers.value),
-      daysTimes: daysTimes.map((item) => ({
-        day: item.date,
-        times: item.times.map((option) => option.value),
-      })),
-      places: places.map((item) => ({
-        place: item.place,
-        day: item.date,
-        times: item.times.map((option) => option.value),
-      })),
+      AvailableSlots: {
+        datetimes: daysTimesToMap(daysTimes),
+        places: places.map((item) => item.place),
+        // places: places.map((item) => ({
+        //   place: item.place,
+        //   day: item.date,
+        //   times: item.times.map((option) => option.value),
+        // })),
+      },
+      Candidates: [],
+      Interviewers: [],
+      MaxNumCandPerSlot: Number(maxCandidates.value),
+      MinNumCandPerSlot: Number(minCandidates.value),
+      NumIntPerSlot: Number(numInterviewers.value),
     };
 
     try {
-      const docRef = await addDoc(collection(db, "data"), dataToSave);
+      const dataCollectionRef = collection(db, "data");
+      const querySnapshot = await getDocs(dataCollectionRef);
+      querySnapshot.forEach(async (docSnapshot) => {
+        await deleteDoc(docSnapshot.ref);
+      });
+
+      const docRef = await addDoc(dataCollectionRef, dataToSave);
       console.log("Documento salvo com ID:", docRef.id);
       toast.success("Dados salvos com sucesso!");
     } catch (error) {
