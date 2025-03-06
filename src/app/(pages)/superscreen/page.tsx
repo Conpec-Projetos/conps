@@ -4,6 +4,7 @@ import Image from "next/image";
 import Logo from "@assets/conpec-full.png";
 import { algorithm } from "../../time_matching";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 import {
   Table,
   TableBody,
@@ -42,6 +43,7 @@ export default function Superscreen() {
   const [candidates, setCandidates] = useState<Candidate[]>([]);
   const [interviewers, setInterviewers] = useState<Interviewer[]>([]);
   const [selected, setSelected] = useState<number>(0);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -120,6 +122,7 @@ export default function Superscreen() {
             className="w-fit bg-orange-conpec font-bold font-lato text-[#FCFCFC] hover:bg-orange-600"
             size="lg"
             variant="default"
+            onClick={() => router.push("/steps-info")}
           >
             Informações da etapa
           </Button>
